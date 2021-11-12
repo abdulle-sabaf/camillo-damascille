@@ -37,7 +37,12 @@
 \newtheorem{po}{公理}
 \newtheorem*{so}{解答}
 \renewcommand\parallel{\mathrel{/\mskip-4mu/}}
-\newenvironment{proof2}{\paragraph{\textbf{证明：}}}{\hfill$\square$}
+\newcommand\dangle{%
+    \mathord{\text{%
+        \tikz[baseline] \draw (0.8em,0ex) -- (0.3em, 0ex) -- (.6em, 1.5ex) -- (.8em, 1.5ex) -- (.5em, 0ex) -- cycle;}}}
+\newcommand\xangle{%
+    \mathord{\text{%
+        \tikz[baseline] \draw (0.8em,1.5ex) -- (0.3em, 0ex) -- (.64em, 0ex) -- (.8em, .36ex) -- (.42em, .36ex) -- cycle;}}}\newenvironment{proof2}{\paragraph{\textbf{证明：}}}{\hfill$\square$}
 \newtheorem{xt}{习题}[section]
 \newtheorem{cor}{推论}[pp]
 % 列举环境的行间距
@@ -80,27 +85,27 @@
 
 如何确定平面是“平”的呢？生活和生产中，我们一般用直线来确定一个面是不是平的。
 比如，木工常常用角尺的直角边放在刨好的木板上。如果直角边总能与板面紧密贴合，就说明木板已刨平了。
-水泥工用直的刮子将刚铺水泥的地面刮平。我们把人们总结出的经验作为判断“平面”的方法，用公理的形式确定下来。
+水泥工用直的刮子将刚铺水泥的地面刮平。我们把人们总结出的经验作为判断平面的方法，用公理的形式确定下来。
 \begin{po}{\textbf{平直公理}}\label{po:1}
     过平面上不重合两点的直线，在平面中。
 \end{po}
 平直公理说明，直线要么与平面没有公共点，要么只交于一点，要么全部在平面里。
 直线与平面没有公共点，则称直线与平面平行，也用$\parallel$表记；直线与平面恰有一公共点，
-则称直线与平面相交；直线与平面有两个或以上公共点，则直线在平面中，
+则称直线与平面相交；直线与平面有两个或以上公共点，则称直线在平面中或平面经过直线。
 用集合的语言来说，直线$l$在平面$\gamma$中，就说明$l$是$\gamma$的子集。
 
-设直线$l$与平面$\gamma$平行，没有公共点，那么它与$\gamma$中任何直线没有公共点。
-比如，给定$\gamma$中一点$A$，$\gamma$中经过$A$的任何直线，都与$l$没有公共点。
+% 我们知道，直线把平面分为两部分，称为直线的两侧。空间中，我们把每侧称为半平面。
+% 直线及其一侧的半平面构成一个展面。而每个平面又把空间分为两部分，称为平面的两方。根据实际需要，我们可以称一点在平面的上方或下方、前方或后方、左方或右方，等等。
 
-从平面公理和平直公理，容易得到又两种定义平面的方法：
-\begin{tm}
+从平面公理和平直公理，容易得到另两种定义平面的方法：
+\begin{tm}\label{tm:1-0-0}
     过一条直线与该直线外一点，有且仅有一个平面。
 \end{tm}
 \begin{proof2}
     设直线为$l$，$P$为$l$外一点。取$l$上不同的两点，和$P$构成不共线的三点。这三点确定一个平面。
     根据平直公理，$l$在该平面中。
 \end{proof2}
-\begin{tm}
+\begin{tm}\label{tm:1-0-1}
     过两条相交的直线，有且仅有一个平面。
 \end{tm}
 \begin{proof2}
@@ -108,7 +113,10 @@
     于是确定一个平面$PQR$，根据平直公理，$l,m$都在$PQR$中。
 \end{proof2}
 
-平面中，我们把两直线没有公共点叫做平行。空间中，两直线除了重合、相交和平行，还有另一种情况。
+设直线$l$与平面$\gamma$平行，没有公共点，那么它与$\gamma$中任何直线没有公共点。
+比如，给定$\gamma$中一点$A$，$\gamma$中经过$A$的任何直线，都与$l$没有公共点。
+
+平面中，两直线没有公共点，就说它们相互平行。空间中，两直线除了重合、相交和平行，还有另一种关系，
 我们称之为直线\textbf{异面}。前面的例子中，根据平行公理，过$\gamma$中的点$A$，
 恰有一条直线与$l$平行，其余与$l$不相交的直线，都称与$l$异面。
 
@@ -118,10 +126,10 @@
 \end{po}
 新版的平行公理在原来的基础上，指定了平行线的位置：在直线与点确定的平面上。
 换句话说，平行是一个平面内性质。两直线平行的关系必然发生在同一平面中。
-也正因如此，我们把其它的无公共点情形叫做异面。
+也正因如此，我们把其它的无公共点的情形叫做异面。
 
-从补充的平行公理出发，就得到另一种定义平面的方法：
-\begin{tm}
+从补充的平行公理出发，可以得到另一种定义平面的方法：
+\begin{tm}\label{tm:1-0-2}
     过两条平行的直线，有且仅有一个平面。
 \end{tm}
 \begin{proof2}
@@ -139,49 +147,183 @@
 两平面的交集包括过这两点的直线。
 而如果两平面的交集中还有不属于这条直线的第三点，那么根据平面公理，这三点确定一个平面，于是两平面重合。
 
-综上所述，从交面公理可以推出：要么两平面没有共同点，要么交集为一条直线$l$，称为两平面相交于直线$l$；
+综上所述，从交面公理可以推出：要么两平面没有公共点，要么交集为一条直线$l$，称为两平面相交于直线$l$；
 要么两平面重合。
 
-有了交面公理，我们可以证明下面这个定理。它将平行直线的性质拓展到空间中。由于证明繁琐，有些地方把它当作公理引入。
-\begin{tm}
+有了交面公理，我们可以证明空间中平行直线的递推性质。由于证明繁琐，有些地方把它当作公理引入。
+\begin{tm}\label{tm:1-0-10}
     如果直线$l_1,l_2$都平行于直线$m$，那么$l_1,l_2$平行或重合。
 \end{tm}
 \begin{proof2}
     设$l_1,m$确定的平面为$\gamma_1$，$l_2,m$确定的平面为$\gamma_2$。分两种情况讨论：
     
-    1. $\gamma_1, \gamma_2$重合。那么$l_1,l_2,m$都在此平面上。根据平面直线的结论，$l_1,l_2$平行或重合。
 
+    1. $\gamma_1, \gamma_2$重合。那么$l_1,l_2,m$都在此平面上。根据平面直线的结论，$l_1,l_2$平行或重合。
+    
     2. $\gamma_1, \gamma_2$不重合。于是$\gamma_1\cap \gamma_2 = m$。
     取$l_1$上一点$P$，$P$与$l_2$确定平面$\beta$。$l_2\notin\gamma_1$，所以$\beta,\gamma_1$不重合。
     设$\beta\cap\gamma_1 = n$。
-
+    
     首先证明$n\parallel l_2$。反设$n$交$l_2$于点$Q$，则$Q\in\gamma_1\cap\gamma_2=m$，
     于是$Q\in m\cap l_2$。这与$m\parallel l_2$矛盾。因此$n\parallel l_2$。
-
+    
     再证明$n\parallel m$。反设$n$交$m$于点$Q$，则过$Q$有$m\parallel l_2$和$n\parallel l_2$，于是$n=m$。
     但$P\in n$，因此$P\in m\cap l_1$，这与$m\parallel l_1$矛盾。因此$n\parallel m$。
-
+    
     $n$与$l_1$都平行于$m$，且有公共点$P$，所以$n = l_1$。所以$l_1\parallel l_2$。
 \end{proof2}
 
-上面提到，两平面要么无公共点，要么相交，要么重合。那么，两平面是否可以无公共点呢？
-我们把无公共点的平面称为平行平面，也用$\parallel$表记。
+接下来回顾直线与平面的关系。从补充后的平行公理，可以得出直线与平面平行的判定方法：
+
+\begin{tm}\label{tm:1-0-20}
+    如果平面$\alpha$中有直线$m$平行于直线$l$，那么$l$平行于平面$\alpha$或在$\alpha$中。
+\end{tm}
+\begin{proof2}
+    设直线$l$平行于平面$\alpha$中的某直线$m$。记$l,m$确定的平面为$\beta$。则要么$\alpha = \beta$，要么$\alpha\cap\beta = m$。如果$\alpha=\beta$，那么$l\subset\alpha$。如果$\alpha\cap\beta = m$，那么$\alpha\cap l= \beta\cap \alpha\cap l = m\cap l = \varnothing $，即$\alpha \parallel l$。
+\end{proof2}
+\begin{tm}\label{tm:1-0-30}
+    如果直线$l$与平面$\alpha$平行，那么经过$l$的任意平面，若与$\alpha$相交，其交线也与$l$平行。
+\end{tm}
+\begin{proof2}
+    设经过$l$的平面$\gamma$与$\alpha$交于直线$m$。一方面，$m,l$共面；另一方面$m\in\alpha$，因此$m,l$无公共点。这说明$m\parallel l$。
+\end{proof2}
+从这些结论可以继续推出：
+\begin{tm}\label{tm:1-0-40}
+    若直线$l$与平面$\alpha$平行，过$\alpha$中任一点作$l$的平行线$m$，则$m$在平面$\alpha$中。
+\end{tm}
+\begin{proof2}
+    若直线$l$与平面$\alpha$平行，设它和$\alpha$中任一点$P$确定的平面为$\beta$，
+    则$\beta$与$\alpha$相交。设交线为$m$，则$P\in m$。根据定理\ref{tm:1-0-30}，$l\parallel m$。
+    这就说明，过$P$而平行于$l$的直线在$\alpha$中。
+\end{proof2}
+\begin{tm}\label{tm:1-0-41}
+    直线$l$与直线$m$平行，则过$m$的平面要么与$l$平行，要么经过$l$。
+\end{tm}
+\begin{proof2}
+    给定过$m$的平面$\alpha$，$m\subset \alpha$与$l$平行，所以根据定理\ref{tm:1-0-20}，
+    $l$平行于平面$\alpha$或在$\alpha$中。
+\end{proof2}
+
+直线与平面的平行关系，也有传递性。
+\begin{tm}
+    若直线$l_1$与直线$l_2$平行，且与平面$\gamma$平行，则$l_2$与$\gamma$平行或在$\gamma$中。
+\end{tm}
+\begin{proof2}
+    $l_1\parallel \gamma$。过$\gamma$中任一点作直线$n\parallel l_1$，则根据定理\ref{tm:1-0-40}，
+    $n$在$\gamma$中。$n\parallel l_1$，$l_1\parallel l_2$，所以根据定理\ref{tm:1-0-10}，$n\parallel l_2$。
+    根据定理\ref{tm:1-0-20}，$l_2\parallel \gamma$或在$\gamma$中。
+\end{proof2}
+
+上面提到，两平面要么无公共点，要么相交，要么重合。我们把无公共点的平面称为平行平面，也用$\parallel$表记。
 平面中，平行公理告诉我们，过直线外一点，恰有一条直线与之平行。空间中的平面，也有类似的结论：
 \begin{tm}
     过平面外一点，恰有一平面与之平行。
-\end{tm}
+\end{tm}\label{tm:1-0-50}
 \begin{proof2}
     设平面$\alpha$外有点$P$。在$\alpha$上选一点$A$，过$A$作两相交直线$l,m$（交点为$A$）。
     根据平行公理，过$P$恰有直线$l', m'$分别与$l,m$平行。$l',m'$相交于点$P$，确定平面$\alpha'$。
     下面证明$\alpha,\alpha'$无公共点，即$\alpha'\parallel\alpha$。
 
     反设$\alpha,\alpha'$有公共点。由于$P\in\alpha'$在$\alpha$外，两者不重合。
-    因此$\alpha \cap \alpha'$是一条直线，记为$n$。$l,m,n$共面，$l,m$相交，
-    因此$l,m$中至少有一条与$n$相交。设$l$与$n$相交，交点为$Q$。$Q\in n\subset\alpha'$，$Q\notin l'$。
-    在$\alpha'$中，过$Q$可作$l'$的平行线。但这条线在$\alpha'$中，因此不是$l$。这与平行公理矛盾。
-
+    因此根据交面公理，$\alpha \cap \alpha'$是一条直线，记为$n$。$l,m,n$共面，$l,m$相交，
+    因此$l,m$中至少有一条与$n$相交。设$l$与$n$相交，交点为$Q$，则$Q\in n\subset\alpha'$。又因为$l\parallel l'$，$Q\in l$，所以$Q\notin l'$，
+    因而在$\alpha'$中，过$Q$可作$l'$的平行线。但这条线在$\alpha'$中，因此不是$l$。这与平行公理矛盾。
+        
     因此，$\alpha,\alpha'$无公共点，$\alpha'\parallel\alpha$。
 \end{proof2}
+
+类似的结论还有：
+
+\begin{tm}\label{tm:1-0-60}
+    过平行于平面$\alpha$的一直线$l$，恰有一平面与$\alpha$平行。
+\end{tm}
+\begin{proof2}
+在$l$上任取一点$P$，$P\notin \alpha$，因此根据定理\ref{tm:1-0-50}，过$P$恰有一平面$\beta$与$\alpha$平行，只需证明$\beta$经过$l$。在$\alpha$中任取一点$Q$，则根据定理\ref{tm:1-0-40}，过$Q$平行于$l$的直线$m$在$\alpha$中。$\beta$与$\alpha$平行，也就是说$\beta$与$\alpha$无公共点，所以$\beta$与$\alpha$的子集$m$也无公共点，即$m\parallel \beta$。过$P$作$m$的平行线，则根据定理\ref{tm:1-0-40}，平行线在$\beta$中。而这条平行线就是$l$，所以$l$在$\beta$中。这说明过$l$恰有一平面$\beta$与$\alpha$平行。
+\end{proof2}
+
+从证明中，我们还可以提炼出判定平面平行（或重合）的准则：
+
+\begin{tm}\label{tm:1-0-70}
+    给定平面$\gamma_1, \gamma_2$。设$l,m$为$\gamma_1$中的相交直线。
+    若$\gamma_2$中有直线$l',m'$分别与$l,m$平行或重合，则平面$\gamma_1, \gamma_2$平行或重合。
+\end{tm}
+\begin{proof2}
+    两平面要么相互平行，要么重合，要么相交于一直线。反设$\gamma_1, \gamma_2$相交于直线$n$。
+
+    如果$l=l'$，那么$l\subset \gamma_1\cap\gamma_2$，于是$n=l=l'$。设$m,l$交于点$P$，$m',l'$交于点$Q$。如果$P=Q$，那么$m=m'$，于是$\gamma_1$、$\gamma_2$都是$l,m$确定的平面，$\gamma_1=\gamma_2$。如果$P\neq Q$，那么$P\notin m'$。但$P\in l=n\subset\gamma_2$，因此过$P$作$m'$的平行线，平行线应该在$\gamma_2$中，因此根据平行公理，$m$在$\gamma_2$中。这说明$\gamma_1$、$\gamma_2$都是$l,m$确定的平面，$\gamma_1=\gamma_2$。于是总有两平面重合，矛盾。
+
+    如果$l\parallel l'$，由于$l,m,n$共面，且$l,m$相交，
+    因此$l,m$中至少有一条与$n$相交。设$l$与$n$相交，交点为$Q$，则$Q\in n\subset\gamma_2$。又因为$l\parallel l'$，$Q\in l$，所以$Q\notin l'$。
+    在$\gamma_2$中，过$Q$可作$l'$的平行线。但这条线在$\gamma_2$中，因此不是$l$。这与平行公理矛盾。
+
+    因此，平面$\gamma_1, \gamma_2$平行或重合。
+\end{proof2}
+平行平面之间，也有类似平行直线的传递性。
+\begin{tm}\label{tm:1-0-80}
+
+如果平面$\gamma_1,\gamma_2$都平行于平面$\beta$，那么$\gamma_1,\gamma_2$平行或重合。
+\end{tm}
+我们先证明一个小结论：
+\begin{tm}\label{tm:1-0-90}
+    设平面$\gamma_1\parallel \gamma_2$。平面$\beta$与$\gamma_1,\gamma_2$相交于直线$l_1,l_2$，
+    则$l_1\parallel l_2$。
+\end{tm}
+\begin{proof2}
+    一方面，$l_1,l_2$共面。另一方面，$\gamma_1\parallel \gamma_2$说明$l_1,l_2$无公共点。
+    所以$l_1\parallel l_2$。
+\end{proof2}
+从这个结论还可以推出：如果平面$\gamma_1\parallel \gamma_2$，那么对$\gamma_1$中任意直线，过$\gamma_2$中任一点，作它的平行线，平行线都在$\gamma_2$中。
+
+再来证明定理\ref{tm:1-0-80}。
+\begin{proof2}
+    已知平面$\gamma_1,\gamma_2$都平行于平面$\beta$。在$\beta$中找一点$P$，过$P$作相交直线$l,m$。在$\gamma_1$中找一点$Q$，过$Q$分别作$l,m$的平行线$l_1,m_1$，则$l_1,m_1$都在$\gamma_1$中。它们分别是平面$\gamma_1$与$l,Q$确定的平面$\alpha_1$、平面$\gamma_1$与$m,Q$确定的平面$\alpha_2$的交线。
+    设$\alpha_1,\alpha_2$分别与$\gamma_2$交于$l_2,m_2$，由于$\gamma_2\parallel \beta$，
+    所以根据定理\ref{tm:1-0-30}，$l_2\parallel l$，$m_2\parallel m$。因此根据定理\ref{tm:1-0-10}，
+    $l_2$与$l_1$平行或重合，$m_2$与$m_1$平行或重合。根据定理\ref{tm:1-0-70}，$\gamma_1$、$\gamma_2$平行或重合。
+\end{proof2}
+
+最后，我们还可以得到：
+\begin{tm}\label{tm:1-0-100}
+    若平面$\gamma_1$与直线$l$平行，且与平面$\gamma_2$平行，则$l$与$\gamma_2$平行或在$\gamma_2$中。
+\end{tm}
+\begin{proof2}
+    $l\parallel \gamma_1$，所以过$l$恰有一平面$\beta$与$\gamma_1$平行。如果$\beta=\gamma_2$，
+    则$l\subset\gamma_2$。如果$\beta\parallel\gamma_2$，那么$l\parallel \gamma_2$。
+    如果$\beta$与$\gamma_2$相交于直线$m$，那么由于$m,l$共面且无公共点，$m\parallel l$。
+    于是，根据定理\ref{tm:1-0-20}，$l\parallel \gamma_2$或在$\gamma_2$中。
+\end{proof2}
+
+总结：
+
+我们初步建立了关于空间形状的公理体系，引入了空间中平面的概念，并界定了点、直线和平面的关系：
+\begin{enumerate}
+    \item 直线和平面都是点的集合。
+    \item 直线可能与平面平行、相交，或在平面中。
+    \item 直线可能与直线异面、平行、相交、重合。
+    \item 平面可能与平面平行、相交、重合。
+    \item 直线与直线相交于一点，直线与平面相交于一点，平面与平面相交于一直线。
+\end{enumerate}
+
+
+\begin{sk}
+    \mbox{} \\
+    \indent 1. 定理\ref{tm:1-0-100}的证明中，我们讨论了$\beta$与$\gamma_2$相交于直线$m$的情形。实际上$\beta$是否会与$\gamma_2$相交？如何看待这个论证？
+\end{sk}
+
+\begin{xt}
+    \mbox{} \\
+    \indent 1. 如果直线$l$与直线$m$平行，那么过$l$的平面与过$m$的平面要么平行，要么重合，
+    要么交于$l,m$之一，要么交于与$l,m$都平行的直线$n$。 
+\end{xt}
+
+
+\section{空间向量}
+
+上一节中，我们使用公理体系讨论空间中的形状，
+
+
+
+
 
 
 
