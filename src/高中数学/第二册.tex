@@ -319,7 +319,176 @@
 
 \section{空间向量}
 
-上一节中，我们使用公理体系讨论空间中的形状，
+上一节中，我们使用公理体系讨论空间中的形状。可以看到，使用公理体系讨论虽然严谨，但过于抽象，步骤繁琐。仅处理点线面的平行关系，就需要大量的篇幅。为此，我们尝试用向量的概念来讨论空间中的形状。
+
+平面中，我们用向量表示点，以及原点到此点的平移。现在我们把向量的概念扩展到空间中。我们把空间看作集合，记为$\mathbb{V}$，其中的元素称为向量或点。向量满足如下规则：
+
+\begin{enumerate}
+    \item 加法结合律：$\forall \,\, \mathbf{a}, \mathbf{b}, \mathbf{c} \in \mathbb{V}$，$\mathbf{a}+ (\mathbf{b} + \mathbf{c}) = (\mathbf{a} + \mathbf{b}) + \mathbf{c}$。
+    \item 加法交换律：$\forall \,\, \mathbf{a}, \mathbf{b} \in \mathbb{V}$，$\mathbf{a} + \mathbf{b} = \mathbf{b} + \mathbf{a}$。
+    \item 存在零向量：$\forall \,\, \mathbf{a} \in \mathbb{V}$，$\mathbf{a} + \mathbf{0} = \mathbf{a}$。
+    \item 放缩和四则运算相容：$\forall \,\, \mathbf{a} \in \mathbb{V}$，$1\cdot \mathbf{a} = \mathbf{a}$。$\forall s, t \in \mathbb{R}$，$(s + t)\cdot\mathbf{a} = (s\cdot\mathbf{a}) + (t\cdot\mathbf{a})$，$(s \cdot t)\cdot \mathbf{a} = s \cdot (t\cdot \mathbf{a})$。
+    \item 放缩和平移相容：$\forall \,\, \mathbf{a}, \mathbf{b} \in \mathbb{V}$，$\forall \,\, t \in \mathbb{R}$，$t\cdot(\mathbf{a} + \mathbf{b}) = t\cdot\mathbf{a} + t\cdot\mathbf{b}$。
+\end{enumerate}
+
+这个定义与平面向量相同。在此基础上，我们用同样的方式定义直线、线段和射线。
+\begin{df}
+    过原点的直线是非零向量放缩得到的集合。不过原点的直线是过原点的直线按一点平移得到的集合。
+\end{df}
+给定非零向量$A = \mathbf{a}$，$ \{t\mathbf{a} \, | \, t\in\mathbb{R}\}$是一条过原点$O$和$A$的直线$OA$，
+称为$A$\textbf{引出}的直线，记为$\mathbb{R}\mathbf{a}$。
+给定向量$B = \mathbf{b}$，$ \{t\mathbf{a}+\mathbf{b} \, | \, t\in\mathbb{R}\}$是一条过$B$的直线，
+记为$\mathbb{R}\mathbf{a}+\mathbf{b}$，其中$\mathbb{R}\mathbf{a}$称为它的线性部分；
+而$ \{t\mathbf{a}+(1 - t)\mathbf{b} \, | \, t\in\mathbb{R}\}$就是直线$AB$。
+
+给定非零向量$\mathbf{a}$，如果向量$\mathbf{b}$可以通过$\mathbf{a}$放缩得到，
+或者说$\mathbf{b}\in \mathbb{R}\mathbf{a}$，就称两者\textbf{共线}。
+
+类比可以定义线段和射线：给定非零向量$A = \mathbf{a}$和向量$B =\mathbf{b}$，
+$ \{(1 - t)\mathbf{a}+t\mathbf{b} \, | \, t\in [0, 1]\}$是线段$AB$，
+$ \{(1 - t)\mathbf{a}+t\mathbf{b} \, | \, t \geqslant 0 \}$是射线$AB$。
+
+空间向量与平面向量的唯一不同的地方在于，空间向量遵循的不再是平面的根本性质，
+而是空间的根本性质。为了描述空间的根本性质，我们首先引进线性相关的概念：
+\begin{df}
+    给定$n$个向量$\mathbf{a}_1, \mathbf{a}_2, \cdots , \mathbf{a}_n$，
+    对实数$t_1, t_2, \cdots , t_n$来说，
+    $t_1\mathbf{a}_1 + t_2\mathbf{a}_2 + \cdots + t_1\mathbf{a}_n$称为这$n$个向量的\textbf{线性组合}。
+    如果存在一组不全为零的实数$t_1, t_2, \cdots , t_n$，
+    使得线性组合$t_1\mathbf{a}_1 + t_2\mathbf{a}_2 + \cdots + t_1\mathbf{a}_n$是零向量，
+    就说这$n$个向量\textbf{线性相关}。如果不存在这样一组实数，就说这$n$个向量\textbf{线性无关}。
+\end{df}
+
+举例来说，单个非零向量总是线性无关的，因为非零实数乘以非零向量总得到非零向量。
+又如：如果有不全为零的实数$t_1,t_2$使得向量$A, B$的线性组合：$t_1A + t_2B$等于零向量，就说$A, B$线性相关。
+
+具体来说，设$A = 2\mathbf{e}_1 - \mathbf{e}_2$，$B = -6\mathbf{e}_1 + 3 \mathbf{e}_2$，那么
+$$3A + B = \mathbf{0}.$$
+也就是说，选取$t_1 = 3$，$t_2 = 1$，就使得线性组合：$t_1A + t_2B$等于零向量。因此，以上两个向量$A, B$线性相关。
+
+设$A = 2\mathbf{e}_1 - \mathbf{e}_2$，$B = \mathbf{e}_1 + 3 \mathbf{e}_2$，那么对任何$t_1,t_2$，线性组合$t_1A + t_2B$可以写为：
+\begin{align}
+t_1A + t_2B &= t_1 \left( 2\mathbf{e}_1 - \mathbf{e}_2 \right) + t_2 \left( \mathbf{e}_1 + 3 \mathbf{e}_2 \right) \notag \\
+&= (2t_1 + t_2) \mathbf{e}_1 + (-t_1 + 3t_2)\mathbf{e}_2.\notag
+\end{align}
+要使得$t_1A + t_2B$为零向量$(0,0)$，就要求它的横坐标和纵坐标同时为零。也就是说，$t_1,t_2$应该是一元一次方程组
+$$
+\left\{
+\begin{array}{cl}
+  2t_1 + t_2 &= 0 \\
+  -t_1 +3t_2 &= 0 \\
+\end{array}
+\right.
+$$
+的解。解这个一元一次方程组，得到$t_1=t_2=0$。也就是说，不存在不全为零的实数$t_1, t_2$，
+使得线性组合$t_1A + t_2B$为零向量。我们说$A, B$线性无关。
+
+以上的例子也给出了判断一组向量是否线性相关的方法。
+我们将“线性组合$t_1\mathbf{a}_1 + t_2\mathbf{a}_2 + \cdots + t_1\mathbf{a}_n$是零向量”
+的条件转化为关于$t_1, t_2, \cdots , t_n$的一元一次方程组。如果方程组的解集中有不全为零的解，
+这组向量就线性相关。如果方程组没有不全为零的解，就说这组向量线性无关。
+
+直观来看，两个平面向量线性相关和共线是一回事。$A, B$线性相关，
+就是说有有不全为零的实数$t_1,t_2$使得$t_1A + t_2B$等于零向量。
+不妨设$t_1$不为零，那么$A = \frac{t_2}{t_1}B$，因此$A\in\mathbb{R}B$，即$A, B$共线。
+反之亦然。平面的根本性质告诉我们，存在两个不共线的向量，也就是说，
+不多于两个平面向量，可以线性无关。
+
+如果向量多于两个，平面的根本性质告诉我们，只要其中两个向量$A, B$不共线，其余的向量都可以都可以表示成$sA + tB$的形式。因此，设有平面向量$\mathbf{a}_1, \mathbf{a}_2, \cdots , \mathbf{a}_n$。如果$\mathbf{a}_1, \mathbf{a}_2$不共线，那么它们线性相关，存在$t_1\mathbf{a}_1 + t_2\mathbf{a}_2 = \mathbf{0}$。于是
+$$t_1\mathbf{a}_1 + t_2\mathbf{a}_2 + \sum_{i>2}0\cdot\mathbf{a}_i = \mathbf{0}.$$
+如果$\mathbf{a}_1, \mathbf{a}_2$不共线，那么根据平面的根本性质，$\mathbf{a}_3$可以写成：
+$$ \mathbf{a}_3 = s\mathbf{a}_1 + t\mathbf{a}_2.$$
+于是
+$$s\mathbf{a}_1 + t\mathbf{a}_2 - 1\cdot\mathbf{a}_3 + \sum_{i>3}0\cdot\mathbf{a}_i = \mathbf{0}.$$
+也就是说，多于两个平面向量总线性相关。
+
+这个结论反映了平面向量的本质：可以选出两个向量，所有向量都可以从它们开始，通过平移、放缩得到。
+这两个向量叫作平面的基底。而空间中的点显然不一定在同一个平面里。我们把平面的根本性质替换为\textbf{空间的根本性质}：
+
+\begin{enumerate}
+    \item 给定一个非零向量，总能找到另一个向量，使得两者线性无关。
+    \item 给定两个线性无关的向量，总能找到另一个向量，使得三者线性无关。
+    \item 从线性无关的向量$A, B, C$出发，经过放缩、平移，可以得到空间中任何向量。具体来说，
+    任何向量都可以表示成$sA + tB + uC$的形式，集合$\{sA + tB + uC \, | \, s, t, u \in\mathbb{R}\}$就是整个空间。
+    这样的$A, B, C$称为空间的一组\textbf{基}或\textbf{基底}。
+\end{enumerate}
+
+对比平面和空间的根本性质，可以发现，主要的变化是“$2$变成$3$”。平面中保证存在两个线性无关的向量，
+空间中保证存在三个线性无关的向量。按照类似的推理，我们可以得到结论：不多于三个空间向量，
+可以线性无关；多于三个空间向量，总是线性相关。我们把这个数字称为\textbf{维数}。平面的维数是$2$，立体空间的维数是$3$。
+
+于是我们可以定义立体空间中的平面：
+\begin{df}
+    过原点的平面是两个线性无关的向量通过平移、放缩得到的集合。不过原点的平面是过原点的平面按一点平移得到的集合。
+\end{df}
+
+给定线性无关的向量$A = \mathbf{a}, B = \mathbf{b}$，$ \{s\mathbf{a} + t\mathbf{b} \, | \, s, t\in\mathbb{R}\}$是一个过原点$O$和$A, B$的平面$OAB$。
+给定向量$C = \mathbf{c}$，$ \{s\mathbf{a}+t\mathbf{b}+\mathbf{c}\, | \, s,t\in\mathbb{R}\}$是一条过$C$的直线；
+而$ \{s\mathbf{a}+t\mathbf{b}+(1 - s - t)\mathbf{c} \, | \, t\in\mathbb{R}\}$就是过$A,B,C$的平面$ABC$。
+
+来看几个具体的例子。选定空间的一组基底$\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z$，
+我们可以构建坐标系$Oxyz$，其中$x$轴、$y$轴、$z$轴分别是基向量引出的直线$\mathbb{R}\mathbf{e}_x$、
+$\mathbb{R}\mathbf{e}_y$、$\mathbb{R}\mathbf{e}_z$。空间中任一点$A$可以写成$(a_x,a_y,a_z)$。
+$x$轴、$y$轴构成平面：
+$$ Oxy : \{s\mathbf{e}_x+t\mathbf{e}_y\,|\,s,t\in\mathbb{R}\}. $$
+$x$轴、$z$轴构成平面：
+$$ Oxz : \{s\mathbf{e}_x+t\mathbf{e}_z\,|\,s,t\in\mathbb{R}\}. $$
+$y$轴、$z$轴构成平面：
+$$ Oyz : \{s\mathbf{e}_y+t\mathbf{e}_z\,|\,s,t\in\mathbb{R}\}. $$
+给定点$A(1,0,0)$、$B(0,1,0)$、$C(0,0,1)$，则经过它们的平面为：
+$$ \{sA+tB+(1 - s - t)C \, | \, t\in\mathbb{R}\} = \{(s,\,t,\,1-s-t) \, | \, t\in\mathbb{R}\}. $$
+
+可以验证，这样定义的点、直线、平面符合上一节中的各个公理。
+
+首先来看平面公理。任取不共线三点$A,B,C$，则$A-C,B-C$线性无关，
+因此$ \{sA+tB+(1 - s - t)C \, | \,s, t\in\mathbb{R}\}$是$A,B,C$确定的平面。
+
+如果点$P,Q$在平面$ \{sA+tB+(1 - s - t)C \, | \, t\in\mathbb{R}\}$中，那么存在$s_1, t_1, s_2, t_2$使得
+\begin{align}
+P &= s_1A + t_1B + (1 - s_1 - t_1)C \notag \\
+Q &= s_2A + t_2B + (1 - s_2 - t_2)C \notag 
+\end{align}
+直线$PQ$是集合$\{uP+(1-u)Q \, | \, u\in \mathbb{R}\}$，其中任一点$U = uP+(1-u)Q$可以用$A,B,C$表示为
+\begin{align}
+U &= uP+(1-u)Q \notag \\
+&= (us_1 + (1-u)s_2)A + (ut_1 + (1-u)t_2)B + (u(1 - s_1 - t_1) + (1-u)(1 - s_2 - t_2))C  \notag \\
+&= (us_1 + (1-u)s_2)A + (ut_1 + (1-u)t_2)B + (1 - (us_1 + (1-u)s_2) - (ut_1 + (1-u)t_2))C \notag
+\end{align}
+因此$U$在平面$ABC$中。这说明向量表示的空间符合平直公理。
+
+如果两平面$\gamma_1, \gamma_2$交于点$C$，记$\gamma_1: \{sA_1+tB_1+C\, | \, s,t\in\mathbb{R}\}$，$\gamma_2: \{sA_2+tB_2+C\, | \, s,t\in\mathbb{R}\}$。
+其中$(A_1,B_1)$线性无关，$(A_2,B_2)$线性无关。两平面公共点可以表示为让以下等式成立的$s_1,t_1,s_2,t_2$：
+$$ s_1A_1+t_1B_1+C = s_2A_2+t_2B_2+C. $$
+以上等式可以转为：
+$$ s_1A_1+t_1B_1 - s_2A_2 - t_2B_2 = \mathbf{0}. $$
+根据空间的根本性质，四个向量总是线性相关。所以存在不全为零的四个实数$s_1,t_1,s_2,t_2$使上式成立。
+由于$(A_1,B_1)$线性无关，$(A_2,B_2)$线性无关，所以$s_1A_1+t_1B_1$和$s_2A_2 + t_2B_2$为零向量时，
+$s_1,t_1,s_2,t_2$必然全为零。然而$s_1,t_1,s_2,t_2$不全为零，所以$s_1A_1+t_1B_1$和$s_2A_2 + t_2B_2$不为零向量。
+于是这时$s_1A_1+t_1B_1+C = s_2A_2+t_2B_2+C\neq C$是两平面另一个公共点。这说明向量表示的空间符合交面公理。
+
+平面中，两条直线平行，当且仅当它们的线性部分是同一条过原点的直线。我们用这个方法来判定空间中直线的平行关系。设有两直线$l_1\parallel l_2$，那么它们是同一条过原点的直线平移而成：
+\begin{align}
+l_1: & \,\,\, \{t\mathbf{a} + \mathbf{b}_1 \, | \, t\in\mathbb{R}\} \notag \\
+l_2: & \,\,\, \{t\mathbf{a} + \mathbf{b}_2 \, | \, t\in\mathbb{R}\} \notag
+\end{align}
+所以$l_1,l_2$都在平面：$\gamma : \{t\mathbf{a} + s(\mathbf{b}_1 - \mathbf{b}_2) + \mathbf{b}_2 \, | \, s,t\in\mathbb{R}\}$中。对任意$t\in\mathbb{R}$，$l_1$中的点$t\mathbf{a} + \mathbf{b}_1 = t\mathbf{a} + 1\cdot(\mathbf{b}_1 - \mathbf{b}_2) + \mathbf{b}_2 \in \gamma$；$l_2$中的点$t\mathbf{a} + \mathbf{b}_2 = t\mathbf{a} + 0\cdot(\mathbf{b}_1 - \mathbf{b}_2) + \mathbf{b}_2 \in \gamma$。
+这说明，两条平行直线总在同一平面内，即向量表示的空间符合补充后的平行公理。
+
+\section{距离、长度和垂直}
+我们可以通过向量引进空间中距离和长度的概念。和平面中一样，
+我们选定空间的一组基底$\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z$，然后定义內积：
+$$
+\begin{array}{c}
+    \forall  A = a_x\mathbf{e}_x+a_y\mathbf{e}_y+a_z\mathbf{e}_z,\,\,B = b_x\mathbf{e}_x+b_y\mathbf{e}_y+b_z\mathbf{e}_z, \notag \\
+     A\cdot B = a_xb_x + a_yb_y + a_zb_z. \notag
+\end{array}
+$$ 
+如果向量$A,B$的內积等于$0$，就说它们垂直。我们定义向量$A$的长度为
+$$\|A\| = \sqrt{A\cdot A} = \sqrt{a_x^2 + a_y^2 + a_z^2},$$
+两点$A,B$之间的距离就是
+$$\|A-B\| = \sqrt{(A - B)\cdot(A-B)} = \sqrt{(a_x - b_x)^2 + (a_y-b_y)^2 + (a_z-b_z)^2}. $$
+
+
 
 
 
