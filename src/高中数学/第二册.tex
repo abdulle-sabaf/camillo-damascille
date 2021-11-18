@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{xfrac}
+\usepackage{pifont}
 \usepackage{eucal}
 \usepackage{titlesec}
 \usepackage{amsthm}
@@ -17,6 +18,7 @@
 \usepackage{verbatim}
 \usepackage{fontspec,xunicode,xltxtra}
 \usepackage{xeCJK} 
+\usepackage[b]{esvect}
 
 \definecolor{gl}{RGB}{246, 252, 240}
 \definecolor{gd}{RGB}{236, 244, 230}
@@ -321,9 +323,11 @@
 
 \section{空间向量}
 
-上一节中，我们使用公理体系讨论空间中的形状。可以看到，使用公理体系讨论虽然严谨，但过于抽象，步骤繁琐。仅处理点线面的平行关系，就需要大量的篇幅。为此，我们尝试用向量的概念来讨论空间中的形状。
+上一节中，我们使用公理体系讨论空间中的形状。可以看到，使用公理体系讨论虽然严谨，但过于抽象，步骤繁琐。
+仅处理点线面的平行关系，就需要大量的篇幅。为此，我们尝试用向量的概念来讨论空间中的形状。
 
-平面中，我们用向量表示点，以及原点到此点的平移。现在我们把向量的概念扩展到空间中。我们把空间看作集合，记为$\mathbb{V}$，其中的元素称为向量或点。向量满足如下规则：
+平面中，我们用向量表示点，以及原点到此点的平移。现在我们把向量的概念扩展到空间中。
+我们把空间看作集合，记为$\mathbb{V}$，其中的元素称为向量或点。向量满足如下规则：
 
 \begin{enumerate}
     \item 加法结合律：$\forall \,\, \mathbf{a}, \mathbf{b}, \mathbf{c} \in \mathbb{V}$，$\mathbf{a}+ (\mathbf{b} + \mathbf{c}) = (\mathbf{a} + \mathbf{b}) + \mathbf{c}$。
@@ -338,9 +342,9 @@
     过原点的直线是非零向量放缩得到的集合。不过原点的直线是过原点的直线按一点平移得到的集合。
 \end{df}
 给定非零向量$A = \mathbf{a}$，$ \{t\mathbf{a} \, | \, t\in\mathbb{R}\}$是一条过原点$O$和$A$的直线$OA$，
-称为$A$\textbf{引出}的直线，记为$\mathbb{R}\mathbf{a}$。
-给定向量$B = \mathbf{b}$，$ \{t\mathbf{a}+\mathbf{b} \, | \, t\in\mathbb{R}\}$是一条过$B$的直线，
-记为$\mathbb{R}\mathbf{a}+\mathbf{b}$，其中$\mathbb{R}\mathbf{a}$称为它的线性部分；
+称为$A$\textbf{引出}的直线，记为$\mathbb{R}\mathbf{a}$。$\mathbf{a}$称为直线的\textbf{方向向量}。
+给定向量$B = \mathbf{b}$，$ \{t\mathbf{a}+\mathbf{b} \, | \, t\in\mathbb{R}\}$是一条方向$\mathbf{a}$且经过$B$的直线，
+记为$\mathbb{R}\mathbf{a}+\mathbf{b}$，其中$\mathbb{R}\mathbf{a}$称为它的\textbf{线性部分}；
 而$ \{t\mathbf{a}+(1 - t)\mathbf{b} \, | \, t\in\mathbb{R}\}$就是直线$AB$。
 
 给定非零向量$\mathbf{a}$，如果向量$\mathbf{b}$可以通过$\mathbf{a}$放缩得到，
@@ -373,7 +377,7 @@ $$3A + B = \mathbf{0}.$$
 t_1A + t_2B &= t_1 \left( 2\mathbf{e}_1 - \mathbf{e}_2 \right) + t_2 \left( \mathbf{e}_1 + 3 \mathbf{e}_2 \right) \notag \\
 &= (2t_1 + t_2) \mathbf{e}_1 + (-t_1 + 3t_2)\mathbf{e}_2.\notag
 \end{align}
-要使得$t_1A + t_2B$为零向量$(0,0)$，就要求它的横坐标和纵坐标同时为零。也就是说，$t_1,t_2$应该是一元一次方程组
+要使得$t_1A + t_2B$为零向量$(0,0)$，就要求它的横坐标和纵坐标同时为零。也就是说，$t_1,t_2$应该是二元一次方程组
 $$
 \left\{
 \begin{array}{cl}
@@ -382,12 +386,12 @@ $$
 \end{array}
 \right.
 $$
-的解。解这个一元一次方程组，得到$t_1=t_2=0$。也就是说，不存在不全为零的实数$t_1, t_2$，
+的解。解这个二元一次方程组，得到$t_1=t_2=0$。也就是说，不存在不全为零的实数$t_1, t_2$，
 使得线性组合$t_1A + t_2B$为零向量。我们说$A, B$线性无关。
 
 以上的例子也给出了判断一组向量是否线性相关的方法。
 我们将“线性组合$t_1\mathbf{a}_1 + t_2\mathbf{a}_2 + \cdots + t_1\mathbf{a}_n$是零向量”
-的条件转化为关于$t_1, t_2, \cdots , t_n$的一元一次方程组。如果方程组的解集中有不全为零的解，
+的条件转化为关于$t_1, t_2, \cdots , t_n$的多元一次方程组。如果方程组的解集中有不全为零的解，
 这组向量就线性相关。如果方程组没有不全为零的解，就说这组向量线性无关。
 
 直观来看，两个平面向量线性相关和共线是一回事。$A, B$线性相关，
@@ -435,7 +439,7 @@ $a_x, a_y, a_z$称为它的\textbf{坐标分量}。
 
 来看几个具体的例子。选定空间的一组基底$\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z$，
 我们可以构建坐标系$Oxyz$，其中$x$轴、$y$轴、$z$轴分别是基向量引出的直线$\mathbb{R}\mathbf{e}_x$、
-$\mathbb{R}\mathbf{e}_y$、$\mathbb{R}\mathbf{e}_z$。空间中任一点$A$可以写成$(a_x,a_y,a_z)$。
+$\mathbb{R}\mathbf{e}_y$、$\mathbb{R}\mathbf{e}_z$。空间中任一点$A$的坐标是$(a_x,a_y,a_z)$。
 $x$轴、$y$轴构成平面：
 $$ Oxy : \{s\mathbf{e}_x+t\mathbf{e}_y\,|\,s,t\in\mathbb{R}\}. $$
 $x$轴、$z$轴构成平面：
@@ -447,7 +451,34 @@ $$ \{sA+tB+(1 - s - t)C \, | \, t\in\mathbb{R}\} = \{(s,\,t,\,1-s-t) \, | \, t\i
 
 可以验证，这样定义的点、直线、平面符合上一节中的各个公理（见附录B）。
 
-\section{距离、长度和角度}
+\begin{sk}
+    \mbox{}  \\
+    \indent 1. 张三这样总结空间向量的特性：一个向量平移缩放得到一条直线；两个向量平移缩放可以得到一个平面；
+    三个向量平移缩放可以得到整个空间。怎么看待这个说法？\\
+    \indent 2. 是否有维数大于$3$的空间？如何在这样的空间中定义向量？这样定义的向量和空间和$2$维、$3$维的向量有什么相同和不同之处？
+\end{sk}
+
+\begin{xt}
+    \mbox{}  \\
+    \indent 1. 证明：如果一组线性无关的向量的线性组合等于零向量，那么线性组合中每个向量的系数都是$0$。\\
+    \indent 2. 证明：给定空间一组基底，空间中每个向量都可以唯一写成基向量的线性组合。\\
+    \indent 3. 判断以下向量是否线性相关：\\
+    $$
+    \begin{array}{ll}
+        \mbox{\ding{172}}.\,\,\, (1,2,3),\,\,\,(4,5,6), \,\,\,(7,8,9) \quad & \mbox{\ding{173}}.\,\,\, (1,0,-1),\,\,\, (1,2,0) \,\,\,(-2,2,3)  \\
+        \mbox{\ding{174}}.\,\,\, (2,1,-1), \,\,\, (2,-5,-7), \,\,\,(1,-1,-2) \quad & \mbox{\ding{175}}.\,\,\, (a,0,b),\,\,\, (b,-a,0) \,\,\,(a,b,0) 
+    \end{array}
+    $$
+    \indent 4. 已知直线$\mathbb{R}\mathbf{a}+\mathbf{b}$和直线外一点$P$，如何表示它们确定的平面？\\
+    \indent 5. 一直两条直线相交于点$P$，方向向量分别是$\mathbf{a},\mathbf{b}$，如何表示这两条直线，以及它们确定的平面？\\
+    \indent 6. 设有向量$\mathbf{a}=(0,1,1)$、$\mathbf{b}=(2,-1,0)$、$\mathbf{c}=(1,1,-1)$。
+    平面$\gamma = \{s\mathbf{a} + t\mathbf{b} + \mathbf{c} \, | \, s,t,\in\mathbb{R}\}$。\\
+    \indent 6.1. 判断点$(5,1,-2)$、$(3,2,1)$、$(0,5,0)$是否在平面上。\\
+    \indent 6.2. 点$(1,0,0)+u(0,-1,3)$在平面$\gamma$中，求它的坐标。\\
+    \indent 6.3. 直线$l$在平面$\gamma$中，证明：它的方向向量是$\mathbf{a},\mathbf{b}$的线性组合。
+\end{xt}
+
+\section{长度和角度}
 我们可以通过向量引进空间中距离和长度的概念。和平面中一样，
 我们选定空间的一组基底$\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z$，然后定义內积：
 $$
@@ -458,7 +489,7 @@ $$
 $$ 
 如果向量$A,B$的內积等于$0$，就说它们垂直。我们定义向量$A$的长度为
 $$\|A\| = \sqrt{A\cdot A} = \sqrt{a_x^2 + a_y^2 + a_z^2},$$
-长度为$1$的向量称为单位向量。任何非零向量除以自己的长度，都得到一个与自己共线的单位向量。
+长度为$1$的向量称为\textbf{单位向量}。任何非零向量除以自己的长度，都得到一个与自己共线的单位向量。
 我们把这个操作称为\textbf{向量的归一}。
 
 两点$A,B$之间的距离就是
@@ -496,152 +527,310 @@ $$ \cos \angle AOB = \frac{a_xb_x + a_yb_y + a_zb_z}{\sqrt{(a_x^2 + a_y^2 + a_z^
 
 \section{垂直和投影}
 
-通过内积，我们已经定义了空间向量以及直线间的垂直关系。根据定义我们有空间向量垂直的基本性质：如果$\mathbf{a}\perp \mathbf{b}$、$\mathbf{a}\perp \mathbf{c}$，那么$\forall s, t\in\mathbb{R}$，$\mathbf{a}\perp (s\mathbf{b} + t\mathbf{c})$。
+通过内积，我们已经定义了空间向量以及直线间的垂直关系。
+下面来看直线与平面的垂直关系。直线与平面垂直，是直线与平面相交的特殊情形。
+\begin{df}\label{df:1-3-10}
+    给定直线$l$和平面$\gamma$，如果$\gamma$中任意直线都与$l$垂直，就说平面$\gamma$与$l$垂直。
+\end{df}
 
-下面来看直线与平面的垂直关系。直线与平面垂直，是直线与平面相交的特殊情形。一般来说，给定直线$l$和平面$\gamma$，如果$\gamma$中任意直线都与$l$垂直，就说平面$\gamma$与$l$垂直。
-\begin{tm}
-    给定两个线性无关的向量$A,B$，存在非零向量$\mathbf{n}$与它们都垂直。所有与$A,B$都垂直的向量共线。
+给定了直线和平面，如何判定它们垂直呢？我们从以下基本性质出发：
+\begin{tm}\label{tm:1-3-10}
+    如果向量$\mathbf{a}$垂直于另两个向量$\mathbf{u},\mathbf{v}$，
+    那么$\mathbf{a}$也与$\mathbf{u},\mathbf{v}$的任何线性组合垂直。
 \end{tm}
 \begin{proof2}
-首先来看平面中的情况。给定非零平面向量$A$，是否有单位向量与它垂直？根据平面的根本性质，总存在与$A$不共线的向量$B$。但$B$不一定与$A$垂直。我们从$B$出发，找出与$A$垂直的单位向量。
+    如果$\mathbf{a}\perp \mathbf{u}$、$\mathbf{a}\perp \mathbf{v}$，按照定义，
+    $$ \mathbf{a}\cdot \mathbf{u} = 0, \quad \mathbf{a}\cdot \mathbf{v} = 0. $$
+    于是
+    \begin{align}
+        \forall s, t\in\mathbb{R}，\notag \\
+        \mathbf{a}\cdot (s\mathbf{u} + t\mathbf{v}) &= s\mathbf{a}\cdot \mathbf{u} + t\mathbf{a}\cdot \mathbf{v} \notag \\
+        &= 0. \notag
+    \end{align}
+\end{proof2}
+给定直线$l$和平面$\gamma$中两条相交直线。设$l$的方向向量为$\mathbf{a}$，
+两条相交直线相交于点$P$，方向向量为线性无关的向量：$\mathbf{u},\mathbf{v}$，那么$\gamma$可以表示成
+$$ \gamma = \{s\mathbf{u} + t\mathbf{v} + P \, | \, s,t\in\mathbb{R}\}. $$
+因此，$\gamma$中任一直线的方向向量总是$\mathbf{u},\mathbf{v}$的线性组合。
+如果$\mathbf{a}$垂直于$\mathbf{u},\mathbf{v}$，那么根据定理\ref{tm:1-3-10}，
+$l$垂直于$\gamma$中任一直线，因而垂直于平面$\gamma$。我们可以把这个结论总结为：
+\begin{tm}\label{tm:1-3-20}
+    直线与平面垂直，当且仅当它垂直于平面中两条相交直线。
+\end{tm}
+接下来我们自然要问：给定了平面，是否有与它垂直的直线呢？
 
-直观上，向量$A,B$确定一个平行四边形，我们将它沿着$A$的方向“平推”，可以把它“扶正”，变成一个矩形。矩形的另一边就和$A$垂直了。把这个想法用向量表示，我们考虑向量$B' = B + uA$，其中$u\in\mathbb{R}$是系数。$B'$是$B$沿$A$方向移动得到的。我们希望$B'\perp A$，即内积为$0$：
+从以上的讨论来看，关键是找到与平面中两个线性无关的向量都垂直的向量。
 
+首先来看平面中的情况。给定非零平面向量$A$，是否有（非零）向量与它垂直？
+根据平面的根本性质，总存在与$A$不共线的向量$B$。但$B$不一定与$A$垂直。
+下面我们从$B$出发，找一个与$A$垂直的非零向量。
+
+直观上，向量$A,B$确定一个平行四边形，我们将它沿着$A$的方向“平推”，可以把它“扶正”，变成一个矩形。
+矩形的另一边就和$A$垂直了。把这个想法用向量表示，我们考虑向量$B' = B + uA$，其中$u\in\mathbb{R}$是系数。
+$B'$是$B$沿$A$方向移动得到的。我们希望$B'\perp A$，即内积为$0$：
 $$ A\cdot B = A\cdot (B + uA) = 0$$
+解得$u = -\frac{A\cdot B}{A\cdot A}$。
+这样我们就找到了垂直于$A$的非零向量$B' = B -\frac{A\cdot B}{A\cdot A}A$。
 
-解得$u = -\frac{A\cdot B}{A\cdot A}$。这样我们就找到了垂直于$A$的非零向量$B' = B -\frac{A\cdot B}{A\cdot A}A$。我们可以进一步将$A$和$B'$分别归一，就得到两个相互垂直的单位向量。我们把这样两个向量称为平面的正交归一基。注意到$A,B$是平面的一组基底。从$A,B$出发得到正交归一基，这个过程称为基底的正交归一。
+直观来看，过$B$作直线$OA$的垂线，设垂足为$P$，则$\frac{A\cdot B}{A\cdot A}A$就是向量$OP$。
+如果想象$OA$为水平线，线段$OB$是一根杆子，那么线段$OP$可以看成$OB$在竖直照射的阳光下的影子。
+我们把向量$\vv{OP}$称为向量$\vv{OB}$在直线$OA$上的投影。严格的定义如下：
+\begin{df}\label{df:1-3-20}
+    给定向量$\mathbf{a}$和向量集合$S$。如果向量$\mathbf{y}\in S$使得$\mathbf{a} - \mathbf{y}$垂直于
+    $S$中所有向量，就说$\mathbf{y}$是$\mathbf{a}$在$S$中的\textbf{投影}，
+    $\mathbf{a} - \mathbf{y}$是$\mathbf{a}$关于$S$的\textbf{修正}。
+\end{df}
+按照严格的定义，向量$\vv{OP}$就是向量$\vv{OB}$在直线$OA$中的投影。
+从$\vv{OB}$中减去它在直线$OA$上的投影，得到垂直于$\vv{OA}$的向量（或者说关于直线$OA$的修正），
+这种方法叫做\textbf{消影法}。
 
-空间的根本性质告诉我们，给定两个线性无关的向量$A,B$，总有向量$C$使得$A,B,C$为空间的基底。我们尝试用类似的方法将它正交归一，得到空间的正交归一基$A_1,B_1,\mathbf{n}$，然后证明$\mathbf{n}$与$A,B$垂直。
+我们可以进一步将$A$和$B'$分别归一，就得到两个相互垂直的单位向量。
+我们把这样两个向量称为平面的\textbf{正交归一基}。注意到$A,B$是平面的一组基底。
+从$A,B$出发得到正交归一基，这个过程称为\textbf{基底的正交归一}。
 
-根据已知条件，$A,B$确定一个平面，是这个平面的基底。按前面的方法将$A,B$正交归一，得到平面的正交归一基$A_1,B_1$。考虑向量$C_1=C+uA_1+vB_1$，其中$u,v$是未知系数。我们希望$C_1$与$A_1,B_1$垂直。分别计算内积$A_1\cdot C_1$、$B_1\cdot C_1$，两者都应当等于$0$。于是得到关于$u,v$的方程组：
+空间的根本性质告诉我们，给定两个线性无关的向量$A,B$，总有向量$C$使得$A,B,C$为空间的基底。
+我们尝试用消影法将它正交归一，得到空间的正交归一基$A_1,B_1,\mathbf{n}$，然后证明$\mathbf{n}$与$A,B$垂直。
+
+根据已知条件，$A,B$确定一个平面$\gamma$，而且是平面$\gamma$的基底。用消影法将$A,B$正交归一，
+得到平面$\gamma$的正交归一基$A_1,B_1$。然后再次使用消影法。这次我们要消去$C$在平面$\gamma$中的投影。
+考虑向量$C_1=C+uA_1+vB_1$，其中$u,v$是未知系数。
+我们希望$C_1$与$A_1,B_1$垂直。分别计算内积$A_1\cdot C_1$、$B_1\cdot C_1$，两者都应当等于$0$。
+于是得到关于$u,v$的方程组：
 $$
-\left\{
-\begin{array}{cl}
-A_1\cdot C + u\|A_1\|^2 + vA_1\cdot B &= 0 \\
-B_1\cdot C + uA_1\cdot B + v\|B_1\|^2 &= 0 \\
-\end{array}
-\right.
+    \left\{
+    \begin{array}{cl}
+    A_1\cdot C + u\|A_1\|^2 + vA_1\cdot B &= 0 \\
+    B_1\cdot C + uA_1\cdot B + v\|B_1\|^2 &= 0 \\
+    \end{array}
+    \right.
 $$
 $A_1,B_1$为正交归一基，所以$A_1\cdot B_1 = 0$，$\|A_1\|^2 = \|B_1\|^2 = 1$。因而解得：
 $$
-\left\{
-\begin{array}{cl}
-u &= -A_1\cdot C \\
-v &= -B_1\cdot C \\
-\end{array}
-\right.
+    \left\{
+    \begin{array}{cl}
+    u &= -A_1\cdot C \\
+    v &= -B_1\cdot C \\
+    \end{array}
+    \right.
 $$
 这样我们就得到了与$A_1,B_1$都垂直的向量
+$$ C_1 = C - (A_1\cdot C)A_1 - (B_1\cdot C)B_1. $$
+它是从$C$中去掉它在平面$\gamma$中的投影$(A_1\cdot C)A_1 + (B_1\cdot C)B_1$得到的。
+将它归一，就得到垂直于$A_1,B_1$的单位向量：$\mathbf{n} = \frac{C_1}{\|C_1\|}$ 。
+于是我们得到了空间的正交归一基：$A_1,B_1,\mathbf{n}$。
 
-$$C_1 = C - (A_1\cdot C)A_1 - (B_1\cdot C)B_1.$$
+$A_1,B_1$是$A,B$确定的平面的正交归一基，所以$A,B$可以表示为$A_1,B_1$的线性组合。
+$\mathbf{n}$与$A_1,B_1$都垂直，因此也垂直于它们的线性组合$A,B$。
+于是我们得到结论：
+\begin{tm}\label{tm:1-3-30}
+    给定两个线性无关的向量$A,B$，存在非零向量$\mathbf{n}$与它们都垂直。
+\end{tm}
+任何平面总由两个线性无关的向量确定。平面$\gamma : \{sA + tB + C \, | \, s, t\in\mathbb{R}\}$，
+则存在单位向量$\mathbf{n}$与$A,B$都垂直。我们称向量$\mathbf{n}$为$\gamma$的法向量。
+以法向量为方向向量的直线，就与平面垂直。这样，我们就找到了与平面垂直的直线。
 
-将它归一，就得到垂直于$A_1,B_1$的单位向量：$\mathbf{n} = \frac{C_1}{\|C_1\|}$ 。于是我们得到了空间的正交归一基：$A_1,B_1,\mathbf{n}$。
+与同一平面垂直的直线有什么共同特征呢？
+从前面的推导还可以得出：所有与$A,B$都垂直的向量共线。
 
-$A_1,B_1$是$A,B$确定的平面的正交归一基，所以$A,B$可以表示为$A_1,B_1$的线性组合。$\mathbf{n}$与$A_1,B_1$都垂直，因此也垂直于它们的线性组合$A,B$。
-
-最后说明与$A,B$垂直的向量都共线。$A_1,B_1,\mathbf{n}$是空间的基底。因此，空间中任何向量$\mathbf{w}$可以分解为：
-$$
-\mathbf{w} = w_A A_1 + w_B B_1 + w_n \mathbf{n}.
-$$
+在前面的推导中，我们知道$A_1,B_1,\mathbf{n}$是空间的基底。因此，空间中任何向量$\mathbf{w}$可以分解为：
+$$ \mathbf{w} = w_A A_1 + w_B B_1 + w_n \mathbf{n}. $$
 如果它与$A,B$都垂直，那么也垂直于它们的线性组合：$A_1,B_1$。计算它与$A_1,B_1$的內积，得到：
 \begin{align}
-0 = \mathbf{w}\cdot A_1  w_A\|A_1\|^2 = w_A, \notag \\
-0 = \mathbf{w}\cdot B_1  w_B\|B_1\|^2 = w_B, \notag \\
+    0 = \mathbf{w}\cdot A_1  w_A\|A_1\|^2 = w_A, \notag \\
+    0 = \mathbf{w}\cdot B_1  w_B\|B_1\|^2 = w_B, \notag 
 \end{align}
-这说明$\mathbf{w} = w_n \mathbf{n}$，与$\mathbf{n}$共线。或者说，所有与$A,B$都垂直的向量的集合是$\mathbb{R}\mathbf{n}$。
-\end{proof2}
-任何平面总由两个线性无关的向量确定。平面$\gamma : \{sA + tB + C \, | \, s, t\in\mathbb{R}\}$，则存在单位向量$\mathbf{n}$与$A,B$都垂直。我们称向量$\mathbf{n}$为$\gamma$的法向量。所有与$A,B$都垂直的向量共线，因此都在$\mathbb{R}\mathbf{n}$上。换句话说，
-\begin{tm}
+这说明$\mathbf{w} = w_n \mathbf{n}$，与$\mathbf{n}$共线。
+或者说，所有与$A,B$都垂直的向量的集合是$\mathbb{R}\mathbf{n}$。
+
+所有与$A,B$都垂直的向量共线，因此都在$\mathbb{R}\mathbf{n}$上。
+因此，垂直于$A,B$确定的平面的直线，其方向向量总在$\mathbb{R}\mathbf{n}$上。
+换句话说，
+\begin{tm}\label{tm:1-3-40}
     垂直于同一平面的直线平行或重合。
 \end{tm}
-$\mathbf{n}$垂直于$A,B$，因此垂直于它们的任意线性组合。平面$\gamma$上任何直线，
-总是由$A,B$的某个线性组合引出的，因此与任何以$\mathbf{n}$为方向的直线垂直。
-这说明平面$\gamma$与任何以$\mathbf{n}$为方向的直线垂直。
-
 给定空间中一点$P$和平面$\gamma$，在$\gamma$上任取一点$O$，引出两个线性无关的向量$OA,OB$，
 于是有单位向量$\mathbf{n}$与它们都垂直，于是$\mathbb{R}\mathbf{n} + P$是过$P$且垂直于$\gamma$的直线。
 另一方面，如果过$P$的直线$\mathbb{R}\mathbf{m} + P$垂直于$\gamma$，
 那么它$\mathbf{m}$垂直于$OA,OB$。于是$\mathbf{n}$与$\mathbf{m}$共线，
 $\mathbb{R}\mathbf{m} + P$就是直线$\mathbb{R}\mathbf{n} + P$。也就是说，
-\begin{tm}
+\begin{tm}\label{tm:1-3-50}
     过一点恰有一条直线与给定平面垂直。
 \end{tm}
-反过来，给定一个非零向量，与它垂直的向量有什么特征呢？下面的定理说明了这些向量的关系：
-\begin{tm}
+
+考虑两条异面直线，它们的方向向量线性无关。因此，我们也可以用定理\ref{tm:1-3-30}讨论与它们都垂直的直线。
+
+设有异面直线$l_1:\mathbb{R}\mathbf{a}_1 + \mathbf{b}_1$、$l_2:\mathbb{R}\mathbf{a}_2 + \mathbf{b}_2$，
+其中$\mathbf{a_1}, \mathbf{a}_2$是单位向量。
+按照定义，$\mathbf{a}_1$和$\mathbf{a}_2$线性无关。根据定理\ref{tm:1-3-30}，有单位向量$\mathbf{n}$与它们都垂直。
+考虑以$\mathbf{n}$为方向的直线$m$，$m$与$l_1,l_2$都垂直。如果$m$与$l_1,l_2$都相交，就说$m$是$l_1,l_2$的\textbf{公垂线}。
+下面我们来找出$l_1,l_2$的公垂线。
+
+我们把$m$表示成$m: \mathbb{R}\mathbf{n} + r_1\mathbf{a}_1 + r_2\mathbf{a}_2$，设$m$与$l_1,l_2$的交点分别是：
+\begin{align}
+    P_1 = t_1\mathbf{a}_1 + \mathbf{b}_1 &= s_1\mathbf{n} + r_1\mathbf{a}_1 + r_2\mathbf{a}_2 \notag \\
+    P_2 = t_2\mathbf{a}_2 + \mathbf{b}_2 &= s_2\mathbf{n} + r_1\mathbf{a}_1 + r_2\mathbf{a}_2  \notag
+\end{align}
+两点分别与$\mathbf{a_1}, \mathbf{a}_2,\mathbf{n}$求内积，得到：
+$$
+\left\{
+\begin{array}[]{cl}
+    t_1 + \mathbf{a}_1\cdot\mathbf{b}_1 &= r_1 + r_2\mathbf{a}_1\cdot\mathbf{a}_2 \\
+    t_1\mathbf{a}_1\cdot\mathbf{a}_2 + \mathbf{a}_2\cdot\mathbf{b}_1 &= r_1\mathbf{a}_1\cdot\mathbf{a}_2 + r_2 \\
+    t_2 + \mathbf{a}_2\cdot\mathbf{b}_2 &= r_1\mathbf{a}_1\cdot\mathbf{a}_2 + r_2 \\
+    t_2\mathbf{a}_1\cdot\mathbf{a}_2 + \mathbf{a}_1\cdot\mathbf{b}_2 &= r_1 + r_2\mathbf{a}_1\cdot\mathbf{a}_2 \\
+    \mathbf{n}\cdot\mathbf{b}_1 &= s_1 \\
+    \mathbf{n}\cdot\mathbf{b}_2 &= s_2
+\end{array}
+\right.
+$$
+从前$4$个方程可以求出$t_1,t_2,r_1,r_2$唯一的一组解，于是可以得到直线$m$，
+也就是说，异面直线$l_1,l_2$总有唯一的公垂线。我们称线段$P_1P_2$为$l_1,l_2$的\textbf{公垂线段}。
+
+向量$\vv{P_1P_2}$与$\mathbf{n}$共线。从后两个方程可以解出$s_1,s_2$，因此线段$P_1P_2$的长度是：
+\begin{align}
+    |P_1P_2| = \|P_2 - P_1\| &= \|s_1\mathbf{n} + r_1\mathbf{a}_1 + r_2\mathbf{a}_2 - (s_2\mathbf{n} + r_1\mathbf{a}_1 + r_2\mathbf{a}_2)\| \notag \\
+    &= \| (s_1 - s_2)\mathbf{n} \| \notag \\
+    &= |\mathbf{n}\cdot(\mathbf{b}_1 - \mathbf{b}_2)|. \notag
+\end{align}
+在$l_1,l_2$上各取一点：$Q_1 = P_1 + q_1\mathbf{a_1}$、$Q_2 = P_2 + q_2\mathbf{a}_2$，则：
+\begin{align}
+    \vv{Q_1Q_2} = P_2 + q_2\mathbf{a}_2 - (P_1 + q_1\mathbf{a_1}) = \vv{P_1P_2}  + (q_2\mathbf{a}_2 - q_1\mathbf{a_1}). \notag 
+\end{align}
+而$\vv{P_1P_2} = (s_1 - s_2)\mathbf{n} \perp q_2\mathbf{a}_2 - q_1\mathbf{a_1}$，所以，根据勾股定理，
+\begin{align}
+    |Q_1Q_2|^2 = |P_1P_2|^2 + \|q_2\mathbf{a}_2 - q_1\mathbf{a_1}\|^2 \geqslant |P_1P_2|^2. \notag 
+\end{align}
+这说明$l_1$上的点到$l_2$上的点的距离总大于等于$|P_1P_2|$。
+我们把$|P_1P_2|$称为\textbf{异面直线的距离}。
+
+给定平面，总有与它垂直的直线。反过来，给定一条直线，是否有与它垂直的平面呢？设直线的方向向量为$\mathbf{n}$，我们来看与它垂直的向量有什么共同特征。
+\begin{tm}\label{tm:1-3-60}
     所有与非零向量$\mathbf{n}$垂直的向量构成一个过原点的平面。    
 \end{tm}
 \begin{proof2}
-$\mathbf{n} = (n_x, n_y, n_z)$是非零向量，所以$n_x, n_y, n_z$不全为零。设$n_x\neq 0$，则向量$P_1(-n_y, n_x, 0)$和$P_2(-n_z, 0, n_x)$都垂直于$\mathbf{n}$。容易验证$P_1,P_2$线性无关，因此它们确定的平面$\gamma$垂直于$\mathbf{n}$。
+设$\mathbf{n} = (n_x, n_y, n_z)$是非零向量，所以$n_x, n_y, n_z$不全为零。
+设$n_x\neq 0$，则向量$P_1(-n_y, n_x, 0)$和$P_2(-n_z, 0, n_x)$都垂直于$\mathbf{n}$。
+容易验证$P_1,P_2$线性无关，因此它们确定的平面$\gamma$垂直于$\mathbf{n}$。
 
 另一方面，设$P$与非零向量$\mathbf{n}$垂直，下面证明$P$在平面$\gamma$中。
 
-可以验证$P_1, P_2, \mathbf{n}$线性无关，因此是空间的一组基底。按前述方法将它正交归一，得到$Q_1, Q_2,\mathbf{m}$，其中$Q_1,Q_2$是$P_1, P_2$正交归一的结果，是平面$\gamma$的正交归一基，$\mathbf{m}$是平面$\gamma$的法向量，因此$\mathbf{m}$、$\mathbf{n}$共线。将$P$在$Q_1, Q_2,\mathbf{m}$上分解：
-
+可以验证$P_1, P_2, \mathbf{n}$线性无关，因此是空间的一组基底。用消影法将它正交归一，
+得到正交归一基$(Q_1, Q_2,\mathbf{m})$，其中$Q_1,Q_2$是$P_1, P_2$正交归一的结果，
+是平面$\gamma$的正交归一基，$\mathbf{m}$是平面$\gamma$的法向量，因此$\mathbf{m}$、$\mathbf{n}$共线。
+将$P$在$Q_1, Q_2,\mathbf{m}$上分解：
 $$ P = p_1Q_1 + p_2Q_2 + p_m\mathbf{m}.$$
-
-$P$垂直于$\mathbf{n}$，因此也垂直于$\mathbf{m}$。于是$\mathbf{m}\cdot P = 0$，即$p_m = 0$。因此$P = p_1Q_1 + p_2Q_2$在平面$\gamma$中。
-
+$P$垂直于$\mathbf{n}$，因此也垂直于$\mathbf{m}$。于是$\mathbf{m}\cdot P = 0$，
+即$p_m = 0$。因此$P = p_1Q_1 + p_2Q_2$在平面$\gamma$中。
 综上所述，所有与非零向量$\mathbf{n}$垂直的向量构成过原点的平面$\gamma$。
 
 \end{proof2}
 
-给定一条直线$l:\mathbb{R}\mathbf{a} + \mathbf{b}$及一点$P$，与$\mathbf{a}$垂直的向量构成一个过原点的平面。
-该平面按$P$平移，就得到一个过$P$的平面。也就是说：
-\begin{tm}
+给定一条直线$l:\mathbb{R}\mathbf{a} + \mathbf{b}$及一点$P$，
+与$\mathbf{a}$垂直的向量构成一个过原点的平面。
+把该平面按$P$平移，就得到一个过$P$的平面。也就是说：
+\begin{tm}\label{tm:1-3-70}
     过一点恰有一个平面与给定直线垂直。
 \end{tm}
 
-垂直于同一直线的平面，有什么特征呢？
-\begin{tm}
-    垂直于同一直线的平面互相平行。
+过空间的每一点，恰有一个平面与给定直线垂直。这些垂直于同一直线的平面，有什么特征呢？
+\begin{tm}\label{tm:1-3-80}
+    垂直于同一直线的平面，相互平行或重合。
 \end{tm}
 \begin{proof2}
-    
-设平面$\gamma_1,\gamma_2$与直线$l$垂直，与$l$分别交于点$P_1,P_2$。过$P_1$在$\gamma_1$中作两条直线$m_1,m_2$，
-过$P_2$作$m_1$的平行线$n_1$，$n_1\perp l$，因此$n_1$在$\gamma_2$中。
-同理，过$P_2$作$m_2$的平行线$n_2$，$n_2$在$\gamma_2$中。
-因此根据定理\ref{tm:1-0-70}，$\gamma_1\parallel \gamma_2$。
+    设平面$\gamma_1,\gamma_2$与直线$l$垂直，与$l$分别交于点$P_1,P_2$。过$P_1$在$\gamma_1$中作两条直线$m_1,m_2$，
+    过$P_2$作$m_1$的平行线$n_1$，$n_1\perp l$，因此$n_1$在$\gamma_2$中。
+    同理，过$P_2$作$m_2$的平行线$n_2$，$n_2$在$\gamma_2$中。
+    因此根据定理\ref{tm:1-0-70}，$\gamma_1$与$\gamma_2$平行或重合。
 \end{proof2}
 
+既然垂直于同一直线的平面相互平行或重合，那么，相互平行的平面，法向量应该相同。
+这一点并不难证明。设平面$\gamma_1,\gamma_2$相互平行。在$\gamma_1$中取相交直线
+$\mathbb{R}\mathbf{a}_1 + \mathbf{b}_1$、$\mathbb{R}\mathbf{a}_2 + \mathbf{b}_1$，
+过$\gamma_2$中一点$\mathbf{b}_2$作它们的平行线，则两条平行线都在$\gamma_2$中，
+且方向向量分别为$\mathbf{a}_1,\mathbf{a}_2$。
+因此，$\gamma_1,\gamma_2$可以写成：
+\begin{align}
+    \gamma_1 = \{s\mathbf{a}_1 + t\mathbf{a}_2 + \mathbf{b}_1 \, | \, s,t\in\mathbb{R}\} \notag \\
+    \gamma_2 = \{s\mathbf{a}_1 + t\mathbf{a}_2 + \mathbf{b}_2 \, | \, s,t\in\mathbb{R}\} \notag
+\end{align}
+它们的法向量都可从$\mathbf{a}_1,\mathbf{a}_2$通过消影法得到，因此是同一个单位向量$\mathbf{n}$。
+
+考虑直线$\mathbb{R}\mathbf{n}$与$\gamma_1,\gamma_2$的交点$P_1,P_2$，可以得到：
+$$
+\begin{array}[]{c}
+    P_1 = r_1\mathbf{n} = s_1\mathbf{a}_1 + t_1\mathbf{a}_2 + \mathbf{b}_1 \\
+    P_2 = r_2\mathbf{n} = s_2\mathbf{a}_1 + t_2\mathbf{a}_2 + \mathbf{b}_2 
+\end{array} 
+$$
+类似异面直线的情况，通过对$\mathbf{n}$求内积，我们得到
+$$
+\begin{array}[]{c}
+    r_1 = \mathbf{n}\cdot\mathbf{b}_1 \\
+    r_2 = \mathbf{n}\cdot\mathbf{b}_2 
+\end{array}
+$$
+因此，两交点的距离为：
+$$ |P_1P_2| = \| r_2\mathbf{n} - r_1\mathbf{n}\| = |\mathbf{n}\cdot(\mathbf{b}_1 - \mathbf{b}_2)|. $$
+在$\gamma_1,\gamma_2$上各取一点：$Q_1 = P_1 + q_{1,1}\mathbf{a_1} + q_{1,2}\mathbf{a}_2$、
+$Q_2 = P_2 + q_{2,1}\mathbf{a_1} + q_{2,2}\mathbf{a}_2$，则：
+\begin{align}
+    \vv{Q_1Q_2} = \vv{P_1P_2}  + (q_{2,1}\mathbf{a_1} + q_{2,2}\mathbf{a}_2 - q_{1,1}\mathbf{a_1} - q_{1,2}\mathbf{a}_2). \notag 
+\end{align}
+而$\vv{P_1P_2} = (r_2 - r_1)\mathbf{n} \perp q_{2,1}\mathbf{a_1} + q_{2,2}\mathbf{a}_2 - q_{1,1}\mathbf{a_1} - q_{1,2}\mathbf{a}_2$，所以，根据勾股定理，
+\begin{align}
+    |Q_1Q_2|^2 = |P_1P_2|^2 + \|q_{2,1}\mathbf{a_1} + q_{2,2}\mathbf{a}_2 - q_{1,1}\mathbf{a_1} - q_{1,2}\mathbf{a}_2\|^2 \geqslant |P_1P_2|^2. \notag 
+\end{align}
+这说明$\gamma_1$上的点到$\gamma_2$上的点的距离总大于等于$|P_1P_2|$。
+我们把$|P_1P_2|$称为\textbf{平行平面的距离}。
+
 设非零向量$\mathbf{n} = (n_x, n_y, n_z)$，与它垂直的向量的集合，就是以下方程的解集。
-
 $$ n_xx + n_yy + n_zz = 0. $$
-
 任何过原点的平面，都有法向量，于是总可以写成三元一次方程的解集。
-因此，过原点的平面，可以用一个三元一次方程定义。不过原点的平面，
-可以看作过原点平面按同一向量平移得到。如果过原点平面上的点满足方程
+因此，过原点的平面，可以用一个三元一次方程定义。
 
+不过原点的平面，可以看作过原点平面按同一向量平移得到。如果过原点平面上的点满足方程
 $$ n_xx + n_yy + n_zz = 0, $$
-
 那么按向量$B(x_b, y_b,z_b)$平移之后得到的点就满足方程：
-
-$$ n_x(x - x_b) + n_y(y - y_b) + n_z(z - z_b) = 0. $$
-
-因此，任何平面总是某个三元一次方程的解集。反之，任何三元一次方程总能写成
-
-$$ n_x(x - x_b) + n_y(y - y_b) + n_z(z - z_b) = 0. $$
-
-的形式，于是解集为某个平面。我们将这个方程称为平面的点法式，
+$$ \mbox{}\qquad\qquad n_x(x - x_b) + n_y(y - y_b) + n_z(z - z_b) = 0. \quad\quad (*)$$
+因此，任何平面总是某个三元一次方程的解集。反之，任何三元一次方程$ax+by+cz+d = 0$总能写成
+$(*)$的形式，于是解集为某个平面。我们将$ax+by+cz+d = 0$称为平面的一般式，将$(*)$称为平面的点法式，
 即经过$B(x_b, y_b,z_b)$且垂直于向量$\mathbf{n} = (n_x, n_y, n_z)$。
 
-三元一次方程的解集是平面，因此，我们也用它来定义平面。比如，$x$轴和$y$轴所在平面$Oxy$可以用方程$z = 0$定义，过点$(-2,10,3)$并与它平行的平面可以用$z = 3$定义。	
+三元一次方程的解集是平面，因此，我们也用它来定义平面。
+比如，$x$轴和$y$轴所在平面$Oxy$可以用方程$z = 0$定义，过点$(-2,10,3)$并与它平行的平面可以用$z = 3$定义。	
 
-用方程来定义平面，可以得出更多结论。比如，考虑到空间中两点$P_1(x_1, y_1, z_1)$和$P_2(x_2, y_2, z_2)$相等的点$P(x,y,z)$，这样的点满足方程：
-
+用方程来定义平面，可以得出更多结论。
+比如，考虑到空间中两点$P_1(x_1, y_1, z_1)$和$P_2(x_2, y_2, z_2)$相等的点$P(x,y,z)$，这样的点满足方程：
 $$ (x - x_1)^2 + (y - y_1)^2 + (z - z_1)^2 = (x - x_2)^2 + (y - y_2)^2 + (z - z_2)^2. $$
-
 方程两边消去$x^2 + y^2 + z^2$，得到关于$x,y,z$的三元一次方程：
-
 $$ 2(x_1-x_2)x + 2(y_1-y_2)y + 2(z_1-z_2)z = x_1^2+y_1^2+z_1^2 - x_2^2-y_2^2-z_2^2. $$
+因此，到两点距离相等的点构成一个平面，称为这两点的\textbf{垂直平分面}。
 
-因此，到两点距离相等的点构成一个平面，称为这两点的垂直平分面。
-
-最后来看面与面的垂直。两个平面相互垂直，指它们的法向量相互垂直。
+再来看平面与平面的垂直关系。两个平面相互垂直，指它们的法向量相互垂直。
 平行平面的法向量相同，所以如果平面与两平行平面中的一个垂直，那么与另一个也垂直。
 
 显然，过平面中一点，有无数平面与它垂直。比如，过$x$轴和$y$轴所在平面$Oxy: z = 0$中的$(0,0,0)$点，
 可以找到平面$x + y = 0$与它垂直。不仅如此，$x + 2y = 0$、$x + 3.3y = 0$、$2.6x - y = 0$等也都与它垂直。
 但所有与它垂直的平面，都经过直线$\{(t,0,0) \, | \, t\in \mathbb{R}\} = \mathbb{R}\mathbf{e}_z$。
+
+\begin{sk}
+    \mbox{} \\
+    \indent 1. 空间中，垂直于同一直线的平面平行或重合，垂直于同一平面的直线平行或重合。这性质和平面中直线的哪些性质相似？\\
+    \indent 2. 空间中的直线能否表示为方程的解集？如果可以，是怎样的方程？\\
+    \indent 3. 平行平面有没有公垂线？异面直线的距离和平行平面的距离有什么联系？
+\end{sk}
+
+\begin{xt}
+    \mbox{} \\
+    \indent 1. 证明：如果直线与平面中两条相交直线垂直，就垂直于这个平面。\\  
+    \indent 2. 给定两个线性无关的向量$A,B$。\\
+    \indent 2.1. 如果$A,B$是单位向量，证明$A+B \perp A-B$。\\
+    \indent 2.2. 以第一问的结论为基础，给出另一种正交归一的方法。\\
+    \indent 3. 求与$(2,-1,1)$、$(0,1,2)$垂直的单位向量。\\
+    \indent 4. 求异面直线$\mathbb{R}(0,1,1)+(1,-1,0)$、$\mathbb{R}(1,0,-1)+(0,1,-1)$的公垂线及距离。\\
+    \indent 5. 求过$(1,0,0)$且垂直于$\mathbb{R}(0,1,0)+(1,-1,1)$的平面。\\
+    \indent 6. 求平行平面$x-y+z=1$和$x-y+z=-1$的距离。
+\end{xt}
 
 \begin{appendix}
 
