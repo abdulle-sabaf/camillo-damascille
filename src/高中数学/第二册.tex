@@ -66,12 +66,175 @@
 \newpage
 
 \chapter{向量和方程}
+我们已经学习过向量。向量将平面形与数集结合起来，让我们能够用方程等代数的手段研究平面形的性质。
+我们已经学习过使用方程来研究直线和圆。本章我们继续使用方程来研究的平面形。
 
 \section{直线束}
+我们知道，平面中的直线可以和二元一次方程对应起来。
+平面中任一直线必然对应某个二元一次方程$ax + by + c = 0$的解集，其中$a,b,c$是系数，$x,y$是未知数。
+
+\begin{sk}
+    方程$ (x - 2y + 2)(x + y - 3) = 0$对应什么平面形状？
+\end{sk}
+方程$ (x - 2y + 2)(x + y - 3) = 0$左边是两个二元一次式的乘积，右边是$0$。我们知道，两个数乘积为$0$，说明两者至少有一个为$0$。
+如果$x,y$使方程成立，那么$x - 2y + 2$和$x + y - 3$至少有一个等于$0$。
+因此，方程$ (x - 2y + 2)(x + y - 3) = 0$的解集是方程$x - 2y + 2=0$和$x + y - 3=0$解集的并集。
+直观来说，对应两条直线。
+
+一般来说，$m$个关于$x,y$的一次式乘积等于$0$，这样的方程的解集对应平面中$m$条直线。
+
+从上面的例子可以看到，我们可以用方程表示多条直线。那么，怎样表示“某种直线”呢？
+
+对给定的系数$a, b$，以下方程代表什么图形呢？
+$$ l_{a,b} :\,\,\,  a(x - 2y + 2) + b(x + y - 3) = 0 $$
+对给定的系数$a, b$，方程$l_{a,b}$是关于$x,y$的二元一次式，所以必然对应平面中一条直线。
+
+$a, b$变化的时候，二元一次式的系数也随着变化，对应的直线也不同。这些直线有什么共同特征呢？
+
+考虑直线$x - 2y + 2=0$和$x + y - 3=0$的交点，它对应两个方程解集的交集。具体可以解得交点坐标：$(\frac{4}{3},\,\,\frac{5}{3})$。
+不论$a, b$取什么值，$(\frac{4}{3},\,\,\frac{5}{3})$总使得方程$l_{a,b}$成立。也就是说，不论$a, b$取什么值，
+对应的直线总经过$(\frac{4}{3},\,\,\frac{5}{3})$。
+
+反过来，如果直线$Ax + By + C=0$经过$(\frac{4}{3},\,\,\frac{5}{3})$，它是否总能写成$a(x - 2y + 2) + b(x + y - 3) = 0$的形式呢？
+
+首先把$a(x - 2y + 2) + b(x + y - 3)$写成一般式：
+$$a(x - 2y + 2) + b(x + y - 3) = (a + b)x + (b - 2a)y + 2a - 3b$$
+要使得直线$Ax + By + C=0$变成这样的形式，就是要找出使得以下方程组成立的$a,b$：
+$$
+    \left\{
+    \begin{array}[]{cl}
+        a + b &= A  \\
+        b - 2a &= B  \\
+        2a - 3b &= C \\
+    \end{array}
+    \right.
+$$
+从前两个方程解得：$a = \frac{A - B}{3}$，$b = \frac{2A + B}{3}$。代入第三个方程，得到：
+$$ \frac{4}{3}A + \frac{5}{3}B + 3C = 0.$$
+而由于直线经过$(\frac{4}{3},\,\,\frac{5}{3})$，因此第三个方程也成立。
+这说明，只要直线经过$(\frac{4}{3},\,\,\frac{5}{3})$，其方程就可以写成$l_{a,b}$的形式。
+
+综上所述，$ a(x - 2y + 2) + b(x + y - 3) = 0, \quad a,b\in\mathbb{R} $表示所有经过$x - 2y + 2=0$和$x + y - 3=0$交点的直线的集合。
+我们把它称为经过直线$x - 2y + 2=0$与$x + y - 3=0$的\textbf{直线束}。
+
+一般来说，设有直线$l_1 : a_1x + b_1y + c_1 = 0$、$l_2 : a_2x + b_2y + c_2 = 0$，那么经过$l_1$和$l_2$的直线束就是：
+$$ s(a_1x + b_1y + c_1) + t(a_2x + b_2y + c_2) = 0, \quad s,t\in\mathbb{R}$$
+如果$l_1$和$l_2$相交，那么它由所有经过$l_1$和$l_2$交点的直线组成。如果$l_1$和$l_2$平行，
+那么它由所有平行于$l_1$的直线组成。
 
 \section{三角形的向量表示}
+三角形是基本而重要的平面形。如何用向量来研究三角形呢？
 
-\secion{圆和直线}
+关于三角形的基本公理是\textbf{三角形全等公理}：
+\begin{po}
+    考虑$\triangle ABC$和$\triangle A'B'C'$。如果$|AB| = |A'B'|$、$|AC| = |A'C'|$成立，并且
+$\angle BAC = \angle B'A'C'$或$\angle BAC = \angle C'A'B'$成立，那么$\triangle ABC$和$\triangle A'B'C'$全等。
+\end{po}
+三角形全等公理的直接应用是“边角边”定理。这里我们也从“边角边”构型出发，使用向量来研究三角形内的点。
+
+从三角形顶点$A$出发的两向量$\vv{AB}$、$\vv{AC}$，分别指向顶点$B$、$C$。对于一般的（非退化的）三角形来说，这两个向量不共线。
+线段$BC$上的点，总可以表示成$\vv{AB}$、$\vv{AC}$倍数之和，称为它们的线性组合。比如$BC$的$k$分点可以表示为：
+$$ \frac{1}{k+1}\vv{AB} + \frac{k}{k+1}\vv{AC}. $$
+
+三角形内部的点，如何表示呢？如图，给定三角形内部一点$P$，直线$CP$、$BP$分别交$AB$、$AC$于$D$、$E$两点。
+设$\vv{AD} = r_1\vv{AB}$、$\vv{AE} = r_2\vv{AC}$。设$P$分别是线段$BE$、$CD$的$k_1$、$k_2$分点，则
+$$ \vv{AP} = \frac{1}{k_2+1}\vv{AB} + \frac{k_2}{k_2+1}\vv{AE} = \frac{1}{k_1+1}\vv{AC} + \frac{k_1}{k_1+1}\vv{AD}. $$
+将$\vv{AD}$、$\vv{AE}$分别用$\vv{AB}$、$\vv{AC}$表示：
+$$ \frac{k_1r_1}{k_1+1}\vv{AB} + \frac{1}{k_1+1}\vv{AC} = \frac{k_2r_2}{k_2+1}\vv{AC} + \frac{1}{k_2+1}\vv{AB}. $$
+即：
+$$ \left(\frac{k_1r_1}{k_1+1} - \frac{1}{k_2+1}\right)\vv{AB} + \left(\frac{1}{k_1+1} - \frac{k_2r_2}{k_2+1}\right)\vv{AC} = \mathbf{0}. $$
+$\vv{AB}$、$\vv{AC}$不共线，因此它们的线性组合只有当系数都为$0$的时候才等于零向量。于是可以得到方程：
+$$
+    \left\{
+    \begin{array}{cc}
+        \frac{k_1r_1}{k_1+1} &= \frac{1}{k_2+1} \\
+        \frac{1}{k_1+1} &= \frac{k_2r_2}{k_2+1}
+    \end{array}
+    \right.
+$$
+解这个关于$k_1,k_2$的方程组，得到：
+$$
+    \left\{
+    \begin{array}{cc}
+        k_1 &= \frac{1-r_2}{r_2 - r_1r_2} \\
+        k_1 &= \frac{1-r_1}{r_1 - r_1r_2}
+    \end{array}
+    \right.
+$$
+代入$\vv{AP}$的表达式，得到：
+$$ \vv{AP} = \frac{r_1 - r_1r_2}{1 - r_1r_2}\vv{AB} + \frac{r_2 - r_1r_2}{1 - r_1r_2}\vv{AC}. $$
+设$\frac{|AD|}{|DB|} = \frac{m}{l}$、$\frac{|AE|}{|EC|} = \frac{n}{l}$，则$r_1 = \frac{m}{m+l}$、$r_2 = \frac{n}{n+l}$，于是
+$$ \vv{AP} = \frac{m\vv{AB} + n\vv{AC}}{l+m+n}.$$
+这个表达式和线段$BC$上的分点很像。设$F$为线段$BC$的$\frac{n}{m}$分点，则
+$$ \vv{AF} = \frac{m\vv{AB} + n\vv{AC}}{m+n} = \frac{l+m+n}{m+n}\vv{AP}, $$
+这说明$AP$的延长线交$BC$于$F$。
+
+总结一下，我们给定三角形内一点$P$，设$AP$、$BP$、$CP$交对边于点$F$、$E$、$D$，最后得到
+$$ \frac{|AD|}{|DB|} \frac{|BF|}{|FC|} \frac{|CE|}{|EA|} = \frac{m}{l} \frac{n}{m} \frac{l}{n} = 1.$$
+这个结论称为\textbf{三角形点分边定理}。
+\begin{tm}{\textbf{三角形点分边定理}}\label{tm:0-1-0}
+    设$P$为三角形$ABC$内一点，$AP$、$BP$、$CP$交对边于点$F$、$E$、$D$，则
+    $$ \frac{|AD|}{|DB|} \frac{|BF|}{|FC|} \frac{|CE|}{|EA|} = 1.$$
+\end{tm}
+注意：前面的讨论实际上也证明了三角形点分边定理的逆定理：
+\begin{tm}\label{tm:0-1-1}
+    设有三角形$ABC$，$D$、$E$、$F$分别是线段$AB$、$AC$、$BC$上的点，且满足
+    $$ \frac{|AD|}{|DB|} \frac{|BF|}{|FC|} \frac{|CE|}{|EA|} = 1.$$
+    那么$AF$、$BE$、$CD$交于一点。
+\end{tm}
+
+根据点分边定理，给定三角形$ABC$和内部一个点，我们可以用三个数$(l,m,n)$标记它，其中$l,m,n$分别是以上提到的比例中的系数。
+注意到$l,m,n$和$2l,2m,2n$、$3l,3m,3n$等等都表示同一个点，所以我们一般约定$l+m+n=1$。反之，任意和为$1$的三个正数组成的有序数组
+$(l,m,n)$都唯一对应了三角形$ABC$内一个点。所以，$(l,m,n)$可以看作三角形内点$P$的“坐标”，称为三角形的\textbf{质心坐标}
+\footnote{这是因为如果在三角形三个顶点上分别放置质量为$l$、$m$、$n$的质点，则这三个质点的质心就在$P$点。}。
+使用质心坐标，可以用$ABC$的顶点表示$P$：
+\begin{align}
+    P &= A + \vv{AP} = A +  \frac{m\vv{AB} + n\vv{AC}}{l+m+n} \notag \\
+    &= A +  \frac{m(B - A) + n(C - A)}{l+m+n} \notag \\
+    &= \frac{lA + mB + nC}{l+m+n} \notag
+\end{align}
+
+\begin{sk}
+    \mbox{} \\
+    \indent 1. 以上的讨论对三角形外的点成立吗？如果成立，$r_1$、$r_2$、$k_1$、$k_2$、$l$、$m$、$n$相应有什么改变？
+    点分边定理的结论是否还成立？需要做出哪些调整？\\
+    \indent 2. $P = \frac{lA + mB + nC}{l+m+n}$对三角形$ABC$外的点$P$还成立吗？
+\end{sk}
+
+使用质心坐标，我们可以研究三角形的心。首先容易得到三角形的重心$G$的质心坐标：$(1,1,1)$，因此：
+$$ G = \frac{1}{3}(A + B + C).$$
+
+再来看内心$I$。我们知道角平分线$AI_A$与$BC$的交点$I_A$使得
+$$ \frac{|BI_A|}{|I_AC|} = \frac{|BA|}{|AC|}$$
+同理可得
+$$ \frac{|AI_C|}{|I_CB|} = \frac{|AC|}{|CB|} , \quad \frac{|CI_B|}{|I_BA|} = \frac{|CB|}{|BA|}$$
+因此$I$的质心坐标是$(|BC|,|CA|,|AB|)$，即：
+$$ I = \frac{aA + bB + cC}{a+b+c},$$
+其中$a = |BC|$、$b = |CA|$、$c = |AB|$分别是三角形三边长度。
+
+使用三角函数可以求出垂心$H$的坐标。设$AH$到$BC$的垂足是$H_A$，则$|BH_A| = |AH_A|\cot{B}$、
+$|CH_A| = |AH_A|\cot{C}$。也就是说
+$$ \frac{|BH_A|}{|H_AC|} = \frac{\cot{\angle B}}{\cot{\angle C}} = \frac{\tan{\angle C}}{\tan{\angle B}}$$
+同理可得
+$$ \frac{|AH_C|}{|H_CB|} = \frac{\tan{\angle B}}{\tan{\angle A}} , \quad \frac{|CH_B|}{|H_BA|} = \frac{\tan{\angle A}}{\tan{\angle C}}$$
+因此$H$的质心坐标是$(\tan{A},\tan{B},\tan{C})$，即：
+$$ H = \frac{\tan{\angle A}\cdot A + \tan{\angle B} \cdot B + \tan{\angle C}\cdot C}{\tan{\angle A} + \tan{\angle B} + \tan{\angle C}}.$$
+
+外心$O$的坐标可以利用正弦定理。设$AO$交$BC$于$O_A$，则根据正弦定理，
+$$ \frac{|AO_A|}{\sin{\angle B}} = \frac{|O_AB|}{\sin{\angle O_AAB}}.$$
+我们知道$\angle O_AAB = \frac{\pi}{2} - \angle C$，所以
+$$ |O_AB| = \frac{|AO_A|\cos{\angle C}}{\sin{\angle B}}.$$
+同理，
+$$ |O_AC| = \frac{|AO_A|\cos{\angle B}}{\sin{\angle C}}.$$
+所以
+$$ \frac{|O_AB|}{|O_AC|} = \frac{\sin{\angle C}\cos{\angle C}}{\sin{\angle B}\cos{\angle B}} = \frac{\sin{2\angle C}}{\sin{2\angle B}}.$$
+同理可得：
+$$ \frac{|AO_C|}{|O_CB|} = \frac{\sin{2\angle B}}{\sin{2\angle A}}, \quad \frac{|CO_B|}{|O_BA|} = \frac{\sin{2\angle A}}{\sin{2\angle C}} .$$
+这说明$O$的质心坐标是$(\sin{2\angle A},\sin{2\angle B},\sin{2\angle C})$，即：
+$$ H = \frac{\sin{2\angle A}\cdot A + \sin{2\angle B} \cdot B + \sin{2\angle C}\cdot C}{\sin{2\angle A} + \sin{2\angle B} + \sin{2\angle C}}.$$
+
+
+\section{圆和直线}
 
 \section{圆和圆的关系}
 
