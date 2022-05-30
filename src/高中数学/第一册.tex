@@ -842,7 +842,6 @@ $\arctan{(-1)} = \frac{3\pi}{4}$，$\arccot{\sqrt{3}} = \frac{\pi}{6}$，$\arcco
 反余切函数的定义域是余切函数的值域。因此，$\cot{(\arccot{x})} = x$对任何实数总成立。
 但反余切函数的值域只是余切函数的定义域的真子集，因此，$\arccot{(\cot{x})} = x$只对$(0, \,\, \pi)$中的数成立。
 
-
 \begin{sk}
     \mbox{} \\
     \indent 1. 能否找到别的区间来定义反正弦函数？能否找到比$[-\frac{\pi}{2}, \,\, \frac{\pi}{2}]$更长的区间？这样定义的反正弦函数有什么不同？\\
@@ -1093,7 +1092,8 @@ $$ a_1b_{g(1)} + a_2b_{g(2)} + \cdots + a_nb_{g(n)} $$
     两列数的顺序和大于等于乱序和，乱序和大于等于逆序和。
 \end{tm}
 \begin{proof2}
-    我们用归纳法证明。设命题$P(n)$：若有$a_1 \geqslant a_2 \geqslant \cdots \geqslant a_n$和$b_1 \geqslant b_2 \geqslant \cdots \geqslant b_n$，那么
+    我们用归纳法证明。设命题$P(n)$：若有$a_1 \geqslant a_2 \geqslant \cdots \geqslant a_n$和
+    $b_1 \geqslant b_2 \geqslant \cdots \geqslant b_n$，那么
     $$ \sum_{i=1}^n a_ib_i \geqslant \sum_{i=1}^n a_ib_{g(i)} \geqslant \sum_{i=1}^n a_ib_{n+1-i} . $$
     其中$g$是$[1\dots n]$到自身的双射。
 
@@ -1143,6 +1143,15 @@ $$ a_1b_{g(1)} + a_2b_{g(2)} + \cdots + a_nb_{g(n)} $$
     因此，对任何正整数$n$，$P(n)$为真。
 \end{proof2}
 
+\begin{xt}    
+    \mbox{}\\
+    \indent 1. 给定两列数：$a_1 \geqslant a_2 \geqslant \cdots \geqslant a_n$和
+$b_1 \geqslant b_2 \geqslant \cdots \geqslant b_n$。\\
+    \indent 1.1 试把$(a_1 + a_2 + \cdots + a_n)(b_1 + b_2 + \cdots + b_n)$用这两列数的顺序和、乱序和与逆序和表示。\\
+    \indent 1.2 证明：$(a_1 + a_2 + \cdots + a_n)(b_1 + b_2 + \cdots + b_n)$小于等于顺序和的$n$倍，大于等于逆序和的$n$倍。 \\
+    \indent 2. 给定正数$a,b,c$。证明：$(a + b + c)(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}) \geqslant 9$。
+\end{xt}
+
 \section{内积不等式}
 
 我们已经看过平面向量的内积不等式：
@@ -1170,6 +1179,13 @@ $$
 
 因此，对一般的$n$，也有内积不等式：
 $$ \sqrt{(a_1^2 + a_2^2 + \cdots + a_n^2)(b_1^2 + b_2^2 + \cdots + b_n^2)} \geqslant |a_1b_1 + a_2b_2+ \cdots + a_nb_n|$$
+
+\begin{xt}    
+    \mbox{}\\
+    \indent 1. 给定正数$a,b,c$。证明：$(a + b + c)(\frac{1}{a}+\frac{1}{b}+\frac{1}{c}) \geqslant 9$。\\
+    \indent 2. 给定正数$a,b,c$。证明：$(ab^2 + bc^2 + ca^2)(ab + bc + ca) \geqslant abc(a+b+c)^2$ \\
+    \indent 3. 给定正数$a$，求$2a + \frac{1}{a^2}$的最小值。
+\end{xt}
 
 \section{诸均值不等式}
 
