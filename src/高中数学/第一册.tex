@@ -36,6 +36,7 @@
 \newtheorem{ex}{例子}[section]
 \newtheorem{et}{例题}[section]
 \newtheorem{sk}{思考}[section]
+\newtheorem*{po}{公理}
 \newtheorem*{so}{解答}
 \newenvironment{proof2}{\paragraph{\textbf{证明：}}}{\hfill$\square$}
 \newtheorem{xt}{习题}[section]
@@ -102,6 +103,18 @@ $$ a_1 = 1, a_2 = 4, \cdots, a_8 = 64 $$
 对于无穷数列，我们还无法定义数列的和，只能定义它的\textbf{部分和}：$S_N = \sum_{i=1}^N a_i$。我们把$S_N$称为数列$\{a_n\}$的前$N$项和。比如，例$1$中的数列的前$4$项和为：
 $$ S_4 = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} =  \frac{25}{12}. $$
 
+\begin{sk}
+    \mbox{}\\
+    \indent 1. 小明把正整数倒数组成的数列记为
+    $$a_1 = 1, a_2 = \frac12, \cdots, a_n = \frac1n, \cdots$$
+    \indent 小红把正整数倒数组成的数列记为
+    $$a_0 = 1, a_1 = \frac12, \cdots, a_n = \frac{1}{n+1}, \cdots$$
+    \indent 这两种记法有什么不同？\\
+    \indent 2. 一般来说，用自然数作序数的数列$\{a_n\}_{n\in\mathbb{N}}$和用正整数作序数的数列$\{a_n\}_{n\in\mathbb{Z}^+}$有什么关系？有什么差别？
+    使用整数作序数的数列$\{a_n\}_{n\in\mathbb{Z}}$呢？\\
+    \indent 3. 是否能用有理数做数列的序数？实数呢？    
+\end{sk}
+
 \begin{xt}
     \mbox{}\\
 \indent 1. 根据以下数列的通项公式，写出数列的前$5$项：\\
@@ -142,7 +155,7 @@ $t\cdot \{a_n\} = \{t\cdot a_n\}$，这个运算称为\textbf{数乘运算}。�
     \forall  \,\, t \in \mathbb{R}, \,\,\, \forall \,\, \{a_n\}, \,\, \{b_n\},\,\,\, & t \cdot (\{a_n\} + \{b_n\}) = (t \cdot \{a_n\}) + (t \cdot \{b_n\}). \notag 
 \end{align}
 
-无穷数列还可以进行函数操作，与函数复合。比如，我们定义函数$f:\,\,x\mapsto x^2 - 3$，
+无穷数列还可以进行函数操作。比如，我们定义函数$f:\,\,x\mapsto x^2 - 3$，
 数列$\{a_n\}$的每一项经过$f$映射到$f(a_n) = f(n-1) = (n-1)^2 - 3 = n^2 - 2n - 2$。
 那么数列$\{n^2-2n-2\}$就可以称为$\{a_n\}$经过$f$的\textbf{像数列}。
 换句话说，我们用实值函数$f$定义了一个$\mathbb{R}^\mathbb{N}$到$\mathbb{R}^\mathbb{N}$的映射。
@@ -169,10 +182,10 @@ $g$满足什么条件时，可以找到另一个$\mathfrak{F}(\mathbb{Z}^+)$中�
 
 \begin{xt}
     \mbox{}\\
-\indent 1. 计算：$\{6n-1\} - \{3k^2 - k + 2\} \cdot \{2^m+1\}$ 。\\
-\indent 2. 已知定义在全体实数上的函数$f:\,\, x\mapsto 2x^2 - x - 4$，
-数列$\{a_n\}$的通项公式为$a_n = n + \frac{1}{n}$，计算$\{f(a_n)\}$。\\
-\indent 3. 另有定义在全体实数上的函数$g:\,\, x\mapsto 1 - \frac{1}{x}$，计算$\{(f - g)(a_n)\}$。
+    \indent 1. 计算：$\{6n-1\} - \{3k^2 - k + 2\} \cdot \{2^m+1\}$ 。\\
+    \indent 2. 已知定义在全体实数上的函数$f:\,\, x\mapsto 2x^2 - x - 4$，
+    数列$\{a_n\}$的通项公式为$a_n = n + \frac{1}{n}$，计算$\{f(a_n)\}$。\\
+    \indent 3. 另有定义在全体实数上的函数$g:\,\, x\mapsto 1 - \frac{1}{x}$，计算$\{(f - g)(a_n)\}$。
 \end{xt}
 
 研究实际问题的时候，我们可能不会直接得到数列的通项公式，而是各项之间的关系。来看以下的例子：
@@ -325,7 +338,7 @@ $$ S_n = \frac{q a_n - a_1}{q - 1}. $$
 
 \chapter{实变函数初步}
 
-上一章中，我们学习了出发集为$\mathbb{Z}^+$的函数。现在我们来学习出发集为$\mathbb{R}$的函数。
+上一章中，我们学习了数列。数列是出发集为$\mathbb{Z}^+$的函数。现在我们来学习出发集为$\mathbb{R}$的函数。
 我们把这样的函数称为\textbf{实变函数}。
 
 我们已经接触过一些简单的实变函数。正比例函数（$x\mapsto ax$）、一次函数（$x\mapsto ax + b$）、
@@ -860,6 +873,345 @@ $\arctan{(-1)} = \frac{3\pi}{4}$，$\arccot{\sqrt{3}} = \frac{\pi}{6}$，$\arcco
     \indent 3. 考虑函数$x\mapsto \arctan{(\tan{x})} - x$，它对哪些实数有定义？画出它在$[-\pi, \,\, \pi]$上的图像。它是周期函数吗？能否将它表示为简单函数和周期函数的和？\\
     \indent 4. 考虑函数$x\mapsto \cos(2x - 1)$，它在什么区间上可以定义反函数？如何用反三角函数表示这个反函数？
 \end{xt}
+
+
+\chapter{数列的极限}
+
+\section{极限的基本性质}
+我们来考察以下数列：
+$$ 0,\,\, \frac{1}{2}, \,\,\frac{2}{3},\,\, \frac{3}{4}, \,\,\frac{4}{5}, \,\,\frac{5}{6}, \cdots $$
+它的通项公式是$a_n = \frac{n-1}{n}$。
+把数列的前几项在数轴上标出来，我们发现：
+随着$n$不断增大，$a_n$不断变大，不断向着$1$靠拢。
+
+数列$\{a_n\}$各项随着$n$增大，不断接近$1$。
+虽然数列任一项都不等于$1$，但我们不难产生这样的想法：随着$n$增大，$a_n$的值任意接近于$1$。
+
+怎样严谨地表达这个想法呢？我们使用“有求必应”和“一路全真”的结构，把上面的想法用更具体的方式来描述。
+直观来看，我们考察以$1$为中心的区间$[1-r,1+r]$，
+无论这个区间多么小，到了一定的$n$以后，所有的$a_n$都会落在这个区间里。
+
+用二元命题$Q(r, n)$表示“$a_n$落在区间$[1-r,1+r]$里”。
+用类似“有求必应”的结构，以上的想法可以写成：
+$$\forall r > 0, \,\,\, \exists n,  \,\,\, \mbox{使得} \forall \,\, m \geqslant n, \,\,\, Q(r, n)\mbox{成立。}$$
+这个结构比“有求必允”结构要求更高。它不仅要求“必允”，而且一旦“允”了，就要求之后“一路全真”。
+用表格来表示这个结论：
+
+\begin{figure}[h] %this figure will be at the right
+    % \vspace{4pt}
+    \centering
+    \includegraphics[width=0.64\textwidth]{数列极限2.png}
+\end{figure}
+
+每格颜色对应$Q(r, n)$的真假。每一行对应一个正数$r$，每一列对应数列的一个下标$n$。我们的想法是：
+不论$r>0$是多少，它对应的行中，$Q(r, n)$必然从某一列起全为真。
+
+我们把$1$称为数列$\{a_n\}$的\textbf{极限}。对一般数列来说，我们定义：
+\begin{df}\textbf{数列的极限} \\
+设有无穷数列$\{a_n\}$。如果有某个数$x$，使得
+$$ \forall r > 0, \,\,\, \exists n,  \,\,\, \mbox{使得} \,\,\, \forall \,\, m \geqslant n, \,\,\, - r \leqslant a_m - x \leqslant r. $$
+就说$\{a_n\}$有极限$x$，或$x$是$\{a_n\}$的极限，或$\{a_n\}$趋于$x$，或$\{a_n\}$收敛到$x$，记作
+$$\lim_{n\to\infty} a_n = x.$$
+数列有极限也称为数列\textbf{收敛}，数列没有极限也称数列\textbf{不收敛}。
+\end{df}
+
+\begin{figure}[h] %this figure will be at the right
+    \vspace{-14pt}
+    \centering
+    \includegraphics[width=0.54\textwidth]{数列极限1.png}
+    \caption*{\texttt{从某一项开始，数列的值总落在区间}$[x-r,x+r]$\texttt{中}}
+\end{figure}
+
+\begin{et}
+数列$\{a_n\}$的通项是$a_n = \frac{1}{n^2}$，它是否有极限？如果有极限，极限是多少？    
+\end{et}
+\begin{so}
+    $\{a_n\}$每项都是正数。
+    $$a_{n} \div a_{n+1} = \frac{1}{n^2} \div \frac{1}{(n+1)^2} = \frac{(n+1)^2}{n^2} = 1 + \frac{2n+1}{n^2} > 1,$$
+    所以$\{a_n\}$是单调递减数列。从数轴上看，$\{a_n\}$不断趋近于$0$。猜测它有极限$0$。\\
+    设$r>0$，考察区间$[-r,r]$。设$n_r$是大于等于$\frac{1}{\sqrt{r}}$的最小正整数，
+    那么，只要$n \geqslant n_r$，就有$n^2 \geqslant n_r^2 \geqslant \frac{1}{r}$，
+    于是$0 \leqslant \frac{1}{n^2} \leqslant r$。因此，$\forall r > 0$，$\exists n_r$，
+    使得$\forall m \geqslant n_r$，$ -r  \leqslant a_m - 0 \leqslant r$。这说明$\{a_n\}$有极限$0$。    
+\end{so}
+
+不难看出，极限是构造出来的。因此，从定义出发，我们可以说某个数是某数列的极限。
+反过来，一个数列有极限，它的极限是否只能有一个呢？答案是肯定的。我们可以用反证法来证明。
+
+反设某数列$\{a_n\}$有两个极限$x_1, x_2$。不妨设$x_1 < x_2$。直觉上，$n$足够大的时候，$a_n$在数轴上离$x_1, x_2$都很近，
+到两点的距离比$x_2 - x_1$的一半都小，加起来就小于$x_2 - x_1$，于是就产生矛盾了。
+
+具体来说，记$\delta = \frac{x_2 - x_1}{2}$为两点距离的一半。选一个小于$\delta$的正数$r$。
+按照极限的定义，有正整数$n_1, n_2$使得：
+\begin{align}
+    \forall m \geqslant n_1 , \,\,\,& -r \leqslant a_m - x_1 \leqslant r , \notag \\
+    \forall m \geqslant n_2 , \,\,\,& -r \leqslant a_m - x_2 \leqslant r . \notag 
+\end{align}
+于是，选一个比$n_1,n_2$都大的$m$，比如$m=n_1+n_2$，这时$a_m - x_1 \leqslant r$，$x_2 - a_m \leqslant r$。
+加起来就得到：
+$$x_2 - x_1 \leqslant 2r < 2\delta = x_2 - x_1.$$
+矛盾！因此，\textbf{数列如果有极限，只能有一个极限。}
+
+数列的极限，如果存在，是唯一的。我们可以把数列$\{a_n\}$的极限记为$a_\infty$。
+
+设数列$\{a_n\}$有极限$a_\infty$。我们把它每一项减去$a_\infty$，
+得到的数列$\{a_n - a_\infty\}$趋于$0$。所以，任何有极限的数列，都可以看做一个趋于$0$的数列加上它的极限。
+我们把趋于$0$的数列称为\textbf{无穷小}。任何有极限的数列，都是它的极限加上无穷小。
+
+极限描述了数列的项在“远处”的特征。我们把数列下标超过一定限度后的特征称为数列的\textbf{大体行为}。
+有极限的数列，我们可以用极限来刻画数列的大体行为（落在极限“附近”）。
+没有极限的数列，大体行为有什么特征呢？
+
+我们来看另一个数列：
+$$ 1,\,\,2,\,\,3,\,\,4,\,\,5,\cdots $$
+它是正整数数列，通项为$a_n = n$。不难看出，它没有极限。因为对任何实数$x$来说，
+令$n_x$为大于$x$的最小正整数，那么从$n_x+1$开始的项都比$x$大至少$1$，
+无法落到$x$附近的小区间里面。可以说，随着$n$增大，$a_n$会比任何数都大。
+
+如何严谨描述这个想法呢？我们仍然可以用“有求必应”的结构，把以上想法写成：
+$$ \forall x, \,\,\, \exists n, \,\,\,\mbox{使得} \,\,\,\forall \,\, m \geqslant n，,\,\,\, a_m \geqslant x.$$
+直观来看，随着$n$增大，从某一项开始，$a_n$会落到数轴任何给定点$x$的右边。
+我们把这个性质称为数列\textbf{趋于正无穷大}。同理，可以定义数列\textbf{趋于负无穷大}：
+$$\forall x, \,\,\, \exists n, \,\,\,\mbox{使得}\,\,\,\forall \,\, m \geqslant n，,\,\,\, a_m \leqslant x.$$
+直观来看，随着$n$增大，从某一项开始，$a_n$会落到数轴任何给定点$x$的左边。
+
+\begin{wrapfigure}[9]{r}{0.33\textwidth} %this figure will be at the right
+    \vspace{-48pt}
+    \flushright
+    \includegraphics[width=0.32\textwidth]{数列无穷大1.png}
+    \caption*{\texttt{趋于无穷大的数列}}
+\end{wrapfigure}
+
+我们也把有这两个性质的数列简称为\textbf{正无穷大}和\textbf{负无穷大}。
+
+\begin{et}
+    设数列$\{\frac{1}{n}\}$的部分和数列为$\{a_n\}$，证明：$\{a_n\}$趋于正无穷大。
+\end{et}
+\begin{proof2}
+    按照定义，$ a_n = 1 + \frac{1}{2} + \cdots + \frac{1}{n}$。\\
+    $a_{n+1} - a_n = \frac{1}{n+1} > 0$，所以$\{a_n\}$单调递增。\\
+    对任意实数$x$，我们需要找到相应的$n$，使得$\forall m \geqslant n$，$a_m \geqslant x$。
+    由于$\{a_n\}$单调递增，只要某一项$a_n \geqslant x$，它之后的项都大于等于$x$。
+    因此，只需要找到$n$使得$a_n \geqslant x$即可。\\
+    如果$x \leqslant 1$，那么$n=1$即满足要求。\\
+    如果$x > 1$，设$M$是大于$x$的最小整数，考虑$n = 2^{2M}$。下面证明$a_{2^{2M}}>x$。\\
+    $$ a_{2^{2M}} = a_{2^0} + \sum_{i=1}^{2M}a_{2^i} - a_{2^{i-1}}.$$
+    \begin{align}
+        \forall \,\, i\in[1\ldots 2M],\,\,\, a_{2^i} - a_{2^{i-1}} &= \frac{1}{2^{i-1}+1} + \frac{1}{2^{i-1}+2} + \cdots + \frac{1}{2^{i}} \notag \\
+        &\geqslant \frac{1}{2^{i}} + \frac{1}{2^{i}} + \cdots + \frac{1}{2^{i}} \notag \\
+        &= \frac{2^{i-1}}{2^{i}} = \frac{1}{2}. \notag
+    \end{align}
+    $$ \mbox{所以}\quad  a_{2^{2M}} \geqslant a_1 + \frac{1}{2} \cdot (2M - 1) = M + \frac{1}{2} > x. $$
+    这就证明$\{a_n\}$趋于正无穷大。
+\end{proof2}
+
+\begin{sk}
+    \mbox{} \\
+    \indent 1. 张三在判定数列$\{a_n\}$的极限时写到：数$x$满足：
+    $$ \forall r > 0, \,\,\, \exists n,  \,\,\, \mbox{使得} \forall \,\, m > n \,\,\, \mbox{都有} x - r < a_m < x + r. $$
+    \indent 因此$\{a_n\}$有极限$x$。他的说法对吗？\\
+    \indent 2. 李四在判定数列$\{a_n\}$的极限时写到：数$x$满足：
+    $$ \forall r > 0, \,\,\, \exists n,  \,\,\, \mbox{使得} \forall \,\, m > n \,\,\, \mbox{都有} x - 2r \leqslant a_m \leqslant x + 2r. $$
+    \indent 因此$\{a_n\}$有极限$x$。他的说法对吗？\\
+    \indent 3. 一般数列除了有极限和趋于正/负无穷大，还可能有什么大体行为？\\
+    \indent 4. 单调数列除了有极限和趋于正/负无穷大，还可能有什么大体行为？
+\end{sk}
+
+\begin{xt}
+    \mbox{} \\
+    \indent 1. 以下数列是否有极限？如果有极限，是多少？\\
+    \indent\indent 1.1. $\{2^{1-n}\}$ \\
+    \indent\indent 1.2. $\{(-1)^{n-1}\frac{n+1}{3n+1}\}$ \\
+    \indent\indent 1.3. $\{1 - \frac{1}{n^3+1}\}$ \\
+    \indent 2. 以下数列是否趋于无穷大？\\
+    \indent\indent 2.1. $\{2^{n}\}$ \\
+    \indent\indent 2.2. $\{n^2\}$ \\
+    \indent\indent 2.3. $\{\frac{2^n}{n^2}\}$\\
+    \indent 3. 定义：无穷数列$\{a_n\}$的子列是指从$\{a_n\}$的项中抽取一部分得到的无穷数列。如果数列$\{a_n\}$趋于$x$（趋于正/负无穷大），证明：$\{a_n\}$的任何子列趋于$x$（趋于正/负无穷大）。
+\end{xt}
+
+\section{极限的运算}
+我们已经学习了数列的运算。数列之间可以做加法、减法、乘法。
+如果数列$\{a_n\}$、$\{b_n\}$有极限，它们的和、差、乘积是否有极限？
+答案是肯定的，并且符合我们的直觉：
+\begin{tm}
+    若数列$\{a_n\}$趋于$a$，$\{b_n\}$趋于$b$，则
+    \begin{align}
+        \lim_{n\to\infty} a_n \pm b_n &= a \pm b, \notag \\
+        \lim_{n\to\infty} a_n \cdot b_n &= a \cdot b. \notag 
+    \end{align}
+\end{tm}
+特别地，令$\{b_n\}$是常数列，就得到数乘对极限的影响：若数列$\{a_n\}$趋于$a$，则
+$$ \forall \,\, t \in \mathbb{R}, \,\,\,  \lim_{n\to\infty} t \cdot a_n = ta. $$
+\begin{proof2}
+    \mbox{} \\
+    首先证明极限的加法：设数列$\{a_n\}$趋于$a$，$\{b_n\}$趋于$b$。按照定义，$\forall r > 0$，
+    由于$\frac{r}{2}>0$，总有正整数$n_a, n_b$，使得
+    \begin{align}
+        \forall \,\, m \geqslant n_a, \,\,\, & - \frac{r}{2} \leqslant a_m - a \leqslant \frac{r}{2}, \notag \\
+        \forall \,\, m \geqslant n_b, \,\,\, & - \frac{r}{2} \leqslant b_m - b \leqslant \frac{r}{2}, \notag 
+    \end{align}
+    因此，
+    \begin{align}
+        \forall \,\, m \geqslant n_a + n_b, \,\,\, & -r = - \frac{r}{2} - \frac{r}{2} \leqslant a_m + b_m - a - b \leqslant \frac{r}{2} + \frac{r}{2} = r \notag 
+    \end{align}
+    于是数列$\{a_n\} + \{b_n\}$趋于$a + b$。\\
+    接下来证明极限的数乘：设$t$为实数，数列$\{a_n\}$趋于$a$，则数列$\{t\cdot a_n\}$趋于$ta$。
+    这样，数列$\{a_n\} - \{b_n\}$可以看作$\{a_n\} + \{-b_n\}$，因而趋于$a - b$。\\
+    分两种情况讨论。如果$t=0$，那么$\{t\cdot a_n\} = \{0\}$，显然趋于$0$，也就是$ta$。
+    如果$t \neq 0$，按照定义，对$\forall r > 0$，由于$\frac{r}{t} > 0$，总有正整数$n$使得
+    $$ \forall \,\, m \geqslant n, \,\,\, a - \frac{r}{t} \leqslant a_m \leqslant a + \frac{r}{t}. $$
+    因此
+    $$ \forall \,\, m \geqslant n, \,\,\, ta - r \leqslant t\cdot a_m \leqslant ta + r. $$
+    这就说明数列$\{t\cdot a_n\}$趋于$ta$。\\
+    最后证明极限的乘法：设数列$\{a_n\}$趋于$a$，$\{b_n\}$趋于$b$。按照定义，$\forall r > 0$，
+    由于$\sqrt{r}>0$，总有正整数$n_a, n_b$，使得
+    \begin{align}
+        \forall \,\, m \geqslant n_a, \,\,\, & - \sqrt{r} \leqslant a_m - a \leqslant \sqrt{r}, \notag \\
+        \forall \,\, m \geqslant n_b, \,\,\, & - \sqrt{r} \leqslant b_m - b \leqslant \sqrt{r}, \notag 
+    \end{align}
+    因此
+    \begin{align}
+        \forall \,\, m \geqslant n_a + n_b, \,\,\, & (a_m - a)(b_m - b) \leqslant \left(\sqrt{r}\right)^2 = r  \notag \\
+        & -(a_m - a)(b_m - b) \leqslant \left(\sqrt{r}\right)^2 = r,  \notag \\
+        \mbox{即 }\quad & - r \leqslant (a_m - a)(b_m - b) \leqslant r. \notag 
+    \end{align}
+    这说明数列$\{(a_n - a)(b_n - b)\}$趋于$0$。而$\{b\cdot a_n\}$和$\{a \cdot b_n\}$都趋于$ab$，
+    常数列$\{ab\}$也趋于$ab$，所以根据前面证明的极限加减法，数列
+    $$\{a_nb_n\} = \{(a_n - a)(b_n - b)\} + \{b\cdot a_n\} + \{a \cdot b_n\} - \{ab\}$$
+    趋于$0 + ab + ab - ab = ab$。
+\end{proof2}
+
+四则运算中，加法、减法、乘法都可以对数列的极限做运算。那么除法是否可以呢？
+具体来说，若数列$\{a_n\}$趋于$a$，$\{b_n\}$趋于$b$，是否有$\{\frac{a_n}{b_n}\}$趋于$\frac{a}{b}$？
+
+显然，$b=0$的时候，$\frac{a}{b}$无定义，所以先考虑$b$不等于$0$的情况。这时答案大致是肯定的。
+$\{\frac{a_n}{b_n}\}$趋于$\frac{a}{b}$。
+当然，我们要先“剪掉”$\{b_n\}$最开始一些离$b$比较远的项，确保剩下的项都不等于$0$，这样才好定义$\frac{a_n}{b_n}$。
+然后可以用类似证明极限乘法的方法，证明$\{\frac{1}{b_n}\}$趋于$\frac{1}{b}$，
+这样，$\{\frac{a_n}{b_n}\}$可以看作$\{a_n \cdot \frac{1}{b_n}\}$，因而趋于$\frac{a}{b}$。
+
+如果$b=0$，即数列$\{b_n\}$为无穷小，那么我们需要考虑的问题就更多了。首先考虑$a\neq 0$的情况。
+像前面一样，$\{b_n\}$中等于$0$的项会使得$\frac{a_n}{b_n}$无法定义。
+所以我们要确保$\{b_n\}$中没有$0$。其次，我们选择一个很小的正数，比如$r=\frac{a}{101}$。
+根据定义，存在正整数$N$，使得对所有$n>N$，$|b_n| \leqslant r$、$|a_n - a| \leqslant r$。
+于是，$N$以后的项$\frac{a_n}{b_n}$的绝对值总大于等于$\frac{a - r}{r} = 100$。
+然而，这时$a_n$和$b_n$的情况还不一样。$a_n$和$a$相近，因此符号不变。$b_n$则可正可负。
+因此，$\frac{a_n}{b_n}$的符号是随着$b_n$改变的。也就是说，$N$项以后，$\frac{a_n}{b_n}$或者大于等于$100$，
+或者小于等于$-100$。这样的数列显然没有极限。
+
+于是，我们需要再加一个限制：从某一项开始，$\{b_n\}$的项正负号不变。
+这样，根据上面的讨论，可以证明，从某一项开始，$\frac{a_n}{b_n}$的正负号保持不变。
+
+注意到，上面的讨论中把$100$改成任意正数$M$，结论不变。所以，我们实际上已经证明，$\frac{a_n}{b_n}$的绝对值趋于正无穷大。
+因此，要么从某一项开始，$\frac{a_n}{b_n}$总大于$0$，因此趋于正无穷大；
+要么从某一项开始，$\frac{a_n}{b_n}$总小于$0$，因此趋于负无穷大。
+
+最后考虑$a$也是$0$的情况。这种情况下，不论从哪一项开始，$a_n$、$b_n$都可正可负。
+这时，$\{\frac{a_n}{b_n}\}$的大体行为取决于$a_n$、$b_n$之间的关系，不再是可以统一处理的问题。
+我们把这种情况下的$\{\frac{a_n}{b_n}\}$称为关于数列$\{a_n\}$和$\{b_n\}$的\textbf{不定式}。
+关于数列$\{a_n\}$和$\{b_n\}$的不定式是否有极限，极限是什么，要根据具体情况来讨论。
+
+% \begin{sk}
+%     \mbox{} \\
+%     \indent 1. 如果数列$\{a_n\}$有极限$a$，$\{b_n\}$趋于无穷大，它们的和、差、乘积、商数列是否有极限？是否趋于无穷大？\\
+%     \indent 2. 如果数列$\{a_n\}$、$\{b_n\}$都趋于无穷大，它们的和、差、乘积、商数列有什么特性？
+% \end{sk}
+
+\begin{xt}
+    \mbox{} \\
+    \indent 1. 如果数列$\{a_n\}$有极限$a$，$\{b_n\}$趋于无穷大，它们的和、差、乘积、商数列是否有极限？是否趋于无穷大？\\
+    \indent 2. 如果数列$\{a_n\}$、$\{b_n\}$都趋于无穷大，它们的和、差、乘积、商数列有什么特性？
+\end{xt}
+
+\section{关于数列极限的一些定理}
+\subsection{自敛数列}
+
+我们已经了解过有极限的数列和趋于正（负）无穷大的数列。数列的大体行为是否还有别的可能呢？
+要讨论数列的大体行为，我们更关注的是数列“往后”的性质。如果以某个正整数下标$N$为界，把数列分为前$N$项和$N$以后的项，那么$N$以后的项对我们研究大体行为来说更重要。
+我们把这部分称为数列截断后的\textbf{余列}。数列$\{a_n\}$第$N$项以后的项（$a_{N+1}, a_{N+2}, \cdots$）称为$\{a_n\}$的$N$\textbf{项余列}，记作$\{a_n\}_{n>N}$。
+任何数列在正整数$N$处截断，都能得到一个长度为$N$的有穷数列，以及一个$N$项余列。
+
+我们引入一个新的性质：
+\begin{df}
+    如果随着$N$增大，数列$\{a_n\}$的$N$项余列中，各项之间的差任意小，就说数列$\{a_n\}$是\textbf{自敛}的（或者说$\{a_n\}$有\textbf{自敛性}）。
+    具体来说，如果对任意正数$r$，都存在正整数$N$，使得对$\{a_n\}_{n>N}$中任何两项$a_k, a_m$，都有$|a_k - a_m| \leqslant r$，就说数列$\{a_n\}$是\textbf{自敛}的。
+\end{df}
+顾名思义，自敛的数列，指数列的项会逐渐相互靠近，自相收敛到一起。不难看出，\textbf{有极限的数列，总是自敛的}，
+因为它的项会逐渐趋于它的极限，于是互相靠近，收敛到一起。
+反之是否成立呢？对于实数来说，这个性质是成立的。我们把这个性质称为实数的\textbf{致密性}或\textbf{完备性}。
+
+\begin{po}\textbf{实数完备性}
+    任何自敛的实数数列总有极限，极限为实数。
+\end{po}
+
+我们可以从另一个角度来理解这个性质。考虑数列$\{a_n\}$：
+$$ a_1 = 1, \quad \forall \,\, n \in \mathbb{Z}^+, \,\,\, a_{n+1} = \frac{a_n}{2} + \frac{1}{a_n} $$
+$\{a_n\}$的项是有理数四则运算的结果，所以总是有理数。用归纳法可以证明，$1 < a_n < 2$总成立。此外可以验证：
+$$ a_{n+1} - \sqrt{2} = \frac{(a_n - \sqrt{2})^2}{2a_n},$$
+因此，
+$$ |a_{n+1} - \sqrt{2}| = \frac{|a_n - \sqrt{2}|}{2|a_n|} \cdot |a_n - \sqrt{2}| < \frac{2 - \sqrt{2}}{2} \cdot |a_n - \sqrt{2}| < 0.3\cdot |a_n - \sqrt{2}|. $$
+这说明总有$|a_n - \sqrt{2}| < (0.3)^{n-1}$。于是$\{a_n\}$趋于$\sqrt{2}$。然而，$\sqrt{2}$并不是有理数。这说明有理数集合并不是致密的。
+一列有理数互相靠近，自相收敛，但它们最终收敛的结果，是不属于有理数集合的“空隙”。
+
+对有理数来说，“数列的极限”这个概念是不完备的：我们没法只通过有理数来讨论有理数列的极限。
+
+而实数的完备性说明，如果一列实数互相靠近，不断聚拢到一起，那么最终总能收敛到某个实数，而非某个不属于实数集合的“新数”。
+
+实数的致密性（完备性）是实数集合的根本性质，是对日常生活中“长度”概念进行抽象得到的必然结果：我们认为任意的长度都是存在的，直尺上不可能有两点之间没有长度。
+即便由于测量工具的局限，我们无法精确测量物体的长度，我们也相信，物体的长度是一个真实存在的数，可以无限逼近。
+\textbf{实数是人类在自身尺度下对世界的朴素认知的抽象}。
+
+\begin{xt}
+    \mbox{}\\
+    \indent 1.已知数列的通项公式或递推公式，证明数列是自敛数列：\\
+    \indent 1.1. $\{\frac{1}{n^2}\}_{n\in\mathbb{Z}^+}$\\
+    \indent 1.2. $a_1 = 2, \quad \forall \,\, n\in\mathbb{Z}^+, \,\,\, a_{n+1} = \frac{a_n}{2} + \frac{1}{2a_n}.$\\
+    \indent 1.3. $\left\{\frac{\sin(n)}{n}\right\}_{n\in\mathbb{Z}^+}$ \\
+    \indent 2. 证明：有极限的数列，总是自敛数列。
+\end{xt}
+
+\subsection{数列的确界}
+单调数列是一种简单的数列，单调递增数列中，每一项都大于等于前面的项；单调递减数列中，每一项都小于等于前面的项。单调数列的大体行为有哪些呢？
+
+以单调递增数列为例。我们已经见过有极限的单调递增数列和趋于正无穷大的单调递增数列。除此以外，还有别的可能性吗？
+
+我们用“是否有上界”来分类讨论。如果单调递增数列$\{a_n\}$没有上界，则按照定义，对任何数$M$，都存在正整数$N$，使得$a_N > M$。
+由于$\{a_n\}$单调递增，$n > N$时，$a_n$也大于$M$。因此，$\{a_n\}$趋于正无穷大。
+
+如果如果单调递增数列$\{a_n\}$有上界，即有某个数$M$，
+使得$a_n \leqslant M$总成立。由于$a_n$随着$n$增大而增大，可以想象，增大会逐渐变缓乃至停滞。因此，$\{a_n\}$应该收敛于某个不大于$M$的数。
+
+这个数显然在$a_1$和$M$之间。为了找出这个数，设定正整数$k$之后，我们把$M - a_1$这段距离均匀分成$k$份，记每份的大小为$r_k = \frac{M - a_1}{k}$。
+从$M$出发，一步步“往$a_1$走”：
+$$ M, M - r_k, M - 2r_k, \cdots, M - k r_k = a_1.$$
+如果在第$i$步，数列中所有的数都小于$M - (i-1)r_k$，而在第$i+1$步，有某一项$a_{N(k)}$大于等于$M - i r_k$，就停下来，考虑区间$I_k = [M - (i-1)r_k, \,\, M - i r_k]$。
+
+区间$I_k$的长度是$r_k$，而$a_{N(k)}$在$I_k$中。不仅如此，$n>N(k)$时，$a_{N(k)} \leqslant a_n < M - (i-1)r_k$，因此总在$I_k$中。
+这说明$\forall m,n\geqslant N(k)$，$|a_m - a_n|$总小于$r_k$。而$r_k$无非是$\frac1k$的常数倍数。因此，对任何正数$r$，我们只要令$k$为大于$\frac{M - a_1}{r}$的正整数，就有
+$r_k = \frac{M - a_1}{k} < r$。于是$\forall m,n\geqslant N(k)$，$|a_m - a_n|$总小于$r$。这说明$\{a_n\}$是自敛数列，因此有极限。
+
+综上所述，单调递增数列要么趋于正无穷大，要么有极限。类似可以证明：单调递减数列要么趋于负无穷大，要么有极限。一个简单的判定法则是：
+\begin{tm}\textbf{单调收敛定理}
+    有上界（下界）的单调递增（递减）数列必然有极限。
+\end{tm}
+由于单调递增（递减）数列必然有下界（上界）$a_1$，单调收敛定理可以简化为：\textbf{有界单调数列收敛}。我们把有界单调数列的极限称为它的\textbf{确界}。
+单调递增数列的极限叫做它的\textbf{上确界}，单调递减数列的极限叫做它的\textbf{下确界}。
+
+以单调递增数列来说，如果单调递增数列$\{a_n\}$有上界，设$S_a$为$\{a_n\}$上界的集合，那么上确界$a_\infty$就是其中最小的元素。证明如下：
+
+首先证明$a_\infty \in S_a$。用反证法。反设$a_\infty$不是$\{a_n\}$的上界，则有某个$a_N$大于$a_\infty$，因此其后的项都大于$a_\infty$。即$n > N$时，
+$a_n - a_\infty > a_N - a_\infty$。于是，对正数$a_N - a_\infty$来说，没有正整数$m$使得其后的项与$a_\infty$的差都小于等于$a_N - a_\infty$。
+这与$\{a_n\}$趋于$a_\infty$矛盾！因此$a_\infty$是$\{a_n\}$的上界。
+
+其次证明$\{a_n\}$的上界中没有比$a_\infty$更小的。仍然用反证法。反设$b \in S_a$是某个比$a_\infty$更小的上界：$b < a_\infty$。于是$a_n \leqslant b$总成立。也就是说，
+$$\forall \,\, n, \,\,\, a_\infty - a_n = a_\infty - b + b - a_n \geqslant a_\infty - b.$$
+这说明$\{a_n\}$所有的项和$a_\infty$的差都大于等于固定的正数$a_\infty - b$。于是，对正数$r = \frac{a_\infty - b}{2}$来说，没有正整数$m$使得其后的项与$a_\infty$的差都小于等于$r$。
+这与$\{a_n\}$趋于$a_\infty$矛盾！因此$\{a_n\}$的上界中没有比$a_\infty$更小的。
+
+综上所述，$a_\infty$是$S_a$中最小的元素。
+
+同样地，如果单调递减数列$\{a_n\}$有下界，那么下确界$a_\infty$就是其中最大的元素。
 
 \chapter{二项式}
 
