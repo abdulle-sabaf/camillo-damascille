@@ -1125,7 +1125,7 @@ $$ \forall \,\, t \in \mathbb{R}, \,\,\,  \lim_{n\to\infty} t \cdot a_n = ta. $$
     \end{align}
     于是数列$\{a_n\} + \{b_n\}$趋于$a + b$。\\
     接下来证明极限的数乘：设$t$为实数，数列$\{a_n\}$趋于$a$，则数列$\{t\cdot a_n\}$趋于$ta$。
-    这样，数列$\{a_n\} - \{b_n\}$可以看作$\{a_n\} + \{-b_n\}$，因而趋于$a - b$。\\
+    这样，数列$\{a_n\} - \{b_n\}$可以看作$\{a_n\} + \{-1\cdot b_n\}$，因而趋于$a - b$。\\
     分两种情况讨论。如果$t=0$，那么$\{t\cdot a_n\} = \{0\}$，显然趋于$0$，也就是$ta$。
     如果$t \neq 0$，按照定义，对$\forall r > 0$，由于$\frac{r}{t} > 0$，总有正整数$n$使得
     $$ \forall \,\, m \geqslant n, \,\,\, a - \frac{r}{t} \leqslant a_m \leqslant a + \frac{r}{t}. $$
@@ -1133,17 +1133,20 @@ $$ \forall \,\, t \in \mathbb{R}, \,\,\,  \lim_{n\to\infty} t \cdot a_n = ta. $$
     $$ \forall \,\, m \geqslant n, \,\,\, ta - r \leqslant t\cdot a_m \leqslant ta + r. $$
     这就说明数列$\{t\cdot a_n\}$趋于$ta$。\\
     最后证明极限的乘法：设数列$\{a_n\}$趋于$a$，$\{b_n\}$趋于$b$。按照定义，$\forall r > 0$，
-    由于$\sqrt{r}>0$，总有正整数$n_a, n_b$，使得
+    取$r$与$1$的较小者，记为$r_1$。由于$r_1>0$，总有正整数$n_a, n_b$，使得
     \begin{align}
-        \forall \,\, m \geqslant n_a, \,\,\, & - \sqrt{r} \leqslant a_m - a \leqslant \sqrt{r}, \notag \\
-        \forall \,\, m \geqslant n_b, \,\,\, & - \sqrt{r} \leqslant b_m - b \leqslant \sqrt{r}, \notag 
+        \forall \,\, m \geqslant n_a, \,\,\, & - r_1 \leqslant a_m - a \leqslant r_1, \notag \\
+        \forall \,\, m \geqslant n_b, \,\,\, & - r_1 \leqslant b_m - b \leqslant r_1, \notag 
     \end{align}
     因此
     \begin{align}
-        \forall \,\, m \geqslant n_a + n_b, \,\,\, & (a_m - a)(b_m - b) \leqslant \left(\sqrt{r}\right)^2 = r  \notag \\
-        & -(a_m - a)(b_m - b) \leqslant \left(\sqrt{r}\right)^2 = r,  \notag \\
-        \mbox{即 }\quad & - r \leqslant (a_m - a)(b_m - b) \leqslant r. \notag 
+        \forall \,\, m \geqslant n_a + n_b, \,\,\, & (a_m - a)(b_m - b) \leqslant r_1^2  \notag \\
+        & -(a_m - a)(b_m - b) \leqslant r_1^2  \notag \\
+        \mbox{即 }\quad & - r_1^2 \leqslant (a_m - a)(b_m - b) \leqslant r_1^2. \notag 
     \end{align}
+    如果$r\geqslant 1$，那么$r_1=1$，因此$r_1^2 = 1 \leqslant r$；如果$0 < r <1$，那么$r_1 = r$，
+    $r_1^2 = r^2 < r$。也就是说，任何情况下，总有$0 \leqslant r_1^2 \leqslant r$。于是：
+    $$ -r \leqslant - r_1^2 \leqslant (a_m - a)(b_m - b) \leqslant r_1^2 \leqslant r $$
     这说明数列$\{(a_n - a)(b_n - b)\}$趋于$0$。而$\{b\cdot a_n\}$和$\{a \cdot b_n\}$都趋于$ab$，
     常数列$\{ab\}$也趋于$ab$，所以根据前面证明的极限加减法，数列
     $$\{a_nb_n\} = \{(a_n - a)(b_n - b)\} + \{b\cdot a_n\} + \{a \cdot b_n\} - \{ab\}$$
@@ -1165,12 +1168,12 @@ $\{\frac{a_n}{b_n}\}$趋于$\frac{a}{b}$。
 根据定义，存在正整数$N$，使得对所有$n>N$，$|b_n| \leqslant r$、$|a_n - a| \leqslant r$。
 于是，$N$以后的项$\frac{a_n}{b_n}$的绝对值总大于等于$\frac{a - r}{r} = 100$。
 然而，这时$a_n$和$b_n$的情况还不一样。$a_n$和$a$相近，因此符号不变。$b_n$则可正可负。
-因此，$\frac{a_n}{b_n}$的符号是随着$b_n$改变的。也就是说，$N$项以后，$\frac{a_n}{b_n}$或者大于等于$100$，
-或者小于等于$-100$。这样的数列显然没有极限。
+因此，$\frac{a_n}{b_n}$的符号是随着$b_n$改变的。也就是说，$N$项以后，$\frac{a_n}{b_n}$也许会大于等于$100$，
+也许会小于等于$-100$。如果这样，数列显然没有极限。
 
-于是，我们需要再加一个限制：从某一项开始，$\{b_n\}$的项正负号不变。
-这样，根据上面的讨论，可以证明，从某一项开始，$\frac{a_n}{b_n}$的正负号保持不变。
+于是，我们对$\{b_n\}$再加一个限制：从某一项开始，$\{b_n\}$的项正负号不变。
 
+这时，根据上面的讨论，可以证明，从某一项开始，$\frac{a_n}{b_n}$的正负号保持不变。
 注意到，上面的讨论中把$100$改成任意正数$M$，结论不变。所以，我们实际上已经证明，$\frac{a_n}{b_n}$的绝对值趋于正无穷大。
 因此，要么从某一项开始，$\frac{a_n}{b_n}$总大于$0$，因此趋于正无穷大；
 要么从某一项开始，$\frac{a_n}{b_n}$总小于$0$，因此趋于负无穷大。
@@ -1180,17 +1183,28 @@ $\{\frac{a_n}{b_n}\}$趋于$\frac{a}{b}$。
 我们把这种情况下的$\{\frac{a_n}{b_n}\}$称为关于数列$\{a_n\}$和$\{b_n\}$的\textbf{不定式}。
 关于数列$\{a_n\}$和$\{b_n\}$的不定式是否有极限，极限是什么，要根据具体情况来讨论。
 
-% \begin{sk}
-%     \mbox{} \\
-%     \indent 1. 如果数列$\{a_n\}$有极限$a$，$\{b_n\}$趋于无穷大，它们的和、差、乘积、商数列是否有极限？是否趋于无穷大？\\
-%     \indent 2. 如果数列$\{a_n\}$、$\{b_n\}$都趋于无穷大，它们的和、差、乘积、商数列有什么特性？
-% \end{sk}
+综上所述，有极限的数列$\{a_n\}$、$\{b_n\}$的商数列$\{\frac{a_n}{b_n}\}$的大体行为，可以概括为：
+\begin{center}
+    \fbox{
+        \shortstack[l]{
+            设数列$\{a_n\}$的极限为$a$。\\
+            1. 如果$\{b_n\}$的极限$b\neq 0$，那么$\{\frac{a_n}{b_n}\}$收敛到$\frac{a}{b}$。\\
+            2. 如果$\{b_n\}$的极限$b = 0$，那么：\\
+            \quad 1. 如果$a \neq 0$，那么：\\
+            \quad \quad 1. 如果从某一项起，$b_n$总与$a$同号，那么$\{\frac{a_n}{b_n}\}$趋于正无穷大。\\
+            \quad \quad 2. 如果从某一项起，$b_n$总与$a$异号，那么$\{\frac{a_n}{b_n}\}$趋于负无穷大。\\
+            \quad \quad 3. 否则$\{\frac{a_n}{b_n}\}$没有极限。\\
+            \quad 2. 如果$a = 0$，那么$\{\frac{a_n}{b_n}\}$为不定式。
+        }
+    }
+\end{center}
 
-\begin{xt}
+\begin{sk}
     \mbox{} \\
-    \indent 1. 如果数列$\{a_n\}$有极限$a$，$\{b_n\}$趋于无穷大，它们的和、差、乘积、商数列是否有极限？是否趋于无穷大？\\
-    \indent 2. 如果数列$\{a_n\}$、$\{b_n\}$都趋于无穷大，它们的和、差、乘积、商数列有什么特性？
-\end{xt}
+    \indent 1. 如果数列$\{a_n\}$有极限$a$，$\{b_n\}$趋于无穷大，它们的和、差、积、商数列是否有极限？是否趋于无穷大？\\
+    \indent 2. 如果数列$\{a_n\}$有极限$a$，$\{b_n\}$没有极限，也不趋于无穷大，它们的和、差、积、商数列是否有极限？\\
+    \indent 3. 如果数列$\{a_n\}$、$\{b_n\}$都趋于无穷大，它们的和、差、积、商数列有什么特性？
+\end{sk}
 
 \section{关于数列极限的一些定理}
 \subsection{自敛数列}
@@ -1298,7 +1312,12 @@ $$\forall \,\, n, \,\,\, a_\infty - a_n = a_\infty - b + b - a_n \geqslant a_\in
 上一章中，我们学习了数列的极限。数列是正整数集到实数集的映射。下面，让我们回到实变函数的研究中来。
 数列的极限，对研究实数集到实数集的映射，有什么作用呢？
 
-考虑映射$f_{\mathbb{Q}}:x \mapsto 2^x$。$f$定义在有理数域$\mathbb{Q}$上，把一个数$x$映射到$2$的$x$次幂。
+考虑以下映射：
+\begin{align}
+    f_{\mathbb{Q}}: \mathbb{Q} &\rightarrow \mathbb{R}\notag \\
+    x &\mapsto 2^x \notag
+\end{align}
+$f$定义在有理数域$\mathbb{Q}$上，把一个数$x$映射到$2$的$x$次幂。
 当$x$是有理数时，我们能够定义“$2$的$x$次幂”。
 当$x$不是有理数的时候，我们能不能合理地定义“$2$的$x$次幂”呢？换句话说，是否有一个比较好的实变函数$f_{\mathbb{R}}$，
 当$x$是有理数时，$f_{\mathbb{R}}(x) = f_{\mathbb{Q}}(x)$呢？
@@ -1342,10 +1361,28 @@ $$\forall \, a, b\in \mathbb{Q}, \,\,\, f_{\mathbb{Q}}(a) \cdot f_{\mathbb{Q}}(b
 
 有了尺度定理，我们就可以具体讨论趋于给定实数的有理数列。给定实数$0<a<b$，尺度定理告诉我们，总有正整数$n$使得$na > b$。
 集合$\{n \, | \, na > b\}$不是空集，因此必然有最小元素，记为$n_0$。于是$(n_0 - 1)a \leqslant b < n_0a$。给定实数$x$和任一个正整数$m$，
-令$a=1$，$b=mx$，存在正整数$n_0$使得$(n_0 - 1)a \leqslant b < n_0a$，即
-$$ \frac{n_0 - 1}{m} \leqslant x < \frac{n_0}{m}. $$
-也就是说，有理数$\frac{n_0}{m}$与$x$的差小于$\frac{1}{m}$。这个方法对任何正整数$m$都适用。不难看出，只要$m$足够大，
-我们得到的有理数离$x$就可以足够近。
+令$a=1$，$b=mx$，存在正整数$n_m$使得$(n_m - 1)a \leqslant b < n_ma$，即
+$$ \frac{n_m - 1}{m} \leqslant x < \frac{n_m}{m}. $$
+也就是说，有理数$\frac{n_m}{m}$与$x$的差小于$\frac{1}{m}$。这个方法对任何正整数$m$都适用。不难看出，只要$m$足够大，
+我们得到的有理数离$x$就可以足够近。数列$\{\frac{n_m}{m}\}_{m\in\mathbb{Z}^+}$的极限就是$x$。
+
+回到函数$f_{\mathbb{Q}}$。我们知道，给定实数$x$，存在有理数列$\{x_n\}_{n\in\mathbb{Z}^+}$趋于$x$。
+如果数列$\{f_{\mathbb{Q}}(x_n)\}_{n\in\mathbb{Z}^+}$也有极限$y$，那么，我们是否可以定义$f_{\mathbb{Q}}(x) = y$呢？
+这样定义的$f_{\mathbb{Q}}(x)$，至少在自变量沿着数列$\{x_n\}_{n\in\mathbb{Z}^+}$变动的时候，不会有突然的“跳跃”。
+
+显然，这样定义的$f_{\mathbb{Q}}(x)$依赖于数列$\{x_n\}_{n\in\mathbb{Z}^+}$。如果有另一个数列$\{u_n\}_{n\in\mathbb{Z}^+}$趋于$x$，
+而数列$\{f_{\mathbb{Q}}(u_n)\}_{n\in\mathbb{Z}^+}$没有极限，或者有极限但不等于$y$，那么“跳跃”仍然存在。为此，我们给出更严格的要求：
+对任意趋于$x$的有理数列，$\{x_n\}_{n\in\mathbb{Z}^+}$，数列$\{f_{\mathbb{Q}}(x_n)\}_{n\in\mathbb{Z}^+}$都有极限，并且极限都是同一个数$y$，
+那么就定义函数$f_{\mathbb{Q}}$在$x$的值为$y$。
+
+一般来说，我们把这样的$y$称为\textbf{实变函数在一点的极限}。
+\begin{df}\textbf{实变函数在一点的极限}
+    给定实数$x$和实变函数$f$，如果对任何趋于$x$的数列$\{x_n\}_{n\in\mathbb{Z}^+}$，数列$\{f_{\mathbb{Q}}(x_n)\}_{n\in\mathbb{Z}^+}$只要可定义
+    （$x_n$总在$f$定义域中），就趋于同一个极限$y$，那么就说$y$是函数$f$在$x$的\textbf{极限}，或者说自变量趋于$x$时，$f$趋于或\textbf{收敛到}$y$。
+\end{df}
+从定义可以看出，我们不要求$f$在$x$处有定义。
+
+
 
 
 \section{实变函数在无穷远处的极限}
